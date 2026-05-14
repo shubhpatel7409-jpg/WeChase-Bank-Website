@@ -1,0 +1,2448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Chase Bank — Your Trusted Partner Since 2007</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:    #1a3a5c;
+  --navy2:   #0f2742;
+  --navy3:   #245080;
+  --blue:    #2563a8;
+  --sky:     #e8f4fd;
+  --teal:    #0e7c7b;
+  --teal-lt: #e0f5f5;
+  --green:   #1d6e3c;
+  --green-lt:#e6f4ec;
+  --amber:   #c47d0a;
+  --amber-lt:#fef3d8;
+  --coral:   #c0392b;
+  --coral-lt:#fdecea;
+  --purple:  #5b3fa0;
+  --purple-lt:#ede7ff;
+  --burgundy:#7b1c3e;
+  --burg-lt: #fce8ef;
+  --gold:    #b8870a;
+  --gold-lt: #fdf6e3;
+  --white:   #ffffff;
+  --offwhite:#f7f6f2;
+  --gray-lt: #f0eff0;
+  --gray:    #e2e1e4;
+  --gray-md: #9090a0;
+  --gray-dk: #4a4a5a;
+  --text:    #1e1e2e;
+  --text2:   #3a3a4a;
+  --text3:   #6a6a7a;
+  --shadow:  0 4px 24px rgba(26,58,92,0.10);
+  --shadow2: 0 12px 48px rgba(26,58,92,0.16);
+  --fd: 'Merriweather', Georgia, serif;
+  --fb: 'Lora', Georgia, serif;
+  --fs: 'Source Sans 3', Arial, sans-serif;
+  --radius: 12px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--white);color:var(--text);font-family:var(--fs);font-weight:400;overflow-x:hidden;line-height:1.65}
+
+/* ══ LOADER ══ */
+#loader{position:fixed;inset:0;background:var(--navy2);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+#loader.gone{opacity:0;visibility:hidden}
+.ld-logo{font-family:var(--fd);font-size:52px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:8px;animation:ldReveal 1.2s ease forwards;opacity:0}
+@keyframes ldReveal{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.ld-logo span{color:#f5c842}
+.ld-tagline{font-family:var(--fb);font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:48px;animation:fadeUp .8s .5s forwards;opacity:0}
+.ld-bar{width:220px;height:3px;background:rgba(255,255,255,0.15);border-radius:3px;overflow:hidden}
+.ld-fill{height:100%;background:linear-gradient(90deg,#f5c842,#4ec9e0);animation:ldFill 2.1s ease forwards;width:0}
+@keyframes ldFill{to{width:100%}}
+.ld-pct{font-family:var(--fs);font-size:13px;color:rgba(255,255,255,0.4);margin-top:10px;letter-spacing:2px}
+
+/* ══ TOAST ══ */
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:14px 28px;border-radius:100px;font-family:var(--fs);font-size:14px;z-index:9000;opacity:0;transition:all .4s;pointer-events:none;box-shadow:var(--shadow2)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ══ TOP STRIP ══ */
+.topstrip{background:var(--navy2);padding:7px 5%;display:flex;justify-content:space-between;align-items:center;font-family:var(--fs);font-size:13px;color:rgba(255,255,255,0.65)}
+.topstrip a{color:rgba(255,255,255,0.7);text-decoration:none;margin-left:20px;transition:color .2s}
+.topstrip a:hover{color:#f5c842}
+
+/* ══ HEADER ══ */
+header{position:sticky;top:0;z-index:500;background:#fff;border-bottom:2px solid var(--gray);box-shadow:var(--shadow);transition:all .3s}
+header.up{box-shadow:var(--shadow2)}
+.hd{display:flex;justify-content:space-between;align-items:center;padding:0 5%;height:76px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:900;font-size:20px;color:#fff;transition:transform .3s,box-shadow .3s}
+.logo:hover .logo-icon{transform:rotate(-5deg) scale(1.08);box-shadow:0 8px 24px rgba(37,99,168,0.35)}
+.logo-name{font-family:var(--fd);font-size:22px;font-weight:900;color:var(--navy);line-height:1}
+.logo-sub{font-family:var(--fs);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-md)}
+nav{display:flex;align-items:center;gap:4px}
+nav a{padding:8px 14px;font-family:var(--fs);font-size:14px;color:var(--text2);text-decoration:none;border-radius:8px;transition:all .3s;font-weight:500;position:relative;overflow:hidden}
+nav a::before{content:'';position:absolute;inset:0;background:var(--sky);border-radius:8px;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,.68,0,1.2);z-index:-1}
+nav a:hover::before{transform:scaleX(1)}
+nav a:hover{color:var(--blue);background:transparent}
+.nav-cta{background:var(--navy)!important;color:#fff!important;padding:10px 22px!important;border-radius:8px!important;font-weight:600!important;transition:all .3s!important}
+.nav-cta:hover{background:var(--blue)!important;transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,58,92,0.3)!important}
+nav a.active:not(.nav-cta){color:var(--blue);background:var(--sky)}
+
+/* ══ HERO ══ */
+.hero{background:linear-gradient(135deg,var(--navy2) 0%,var(--navy) 50%,var(--blue) 100%);min-height:88vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:80px 5%;gap:60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(245,200,66,0.08),transparent 70%);pointer-events:none;animation:heroPulse 8s ease-in-out infinite}
+@keyframes heroPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(78,201,224,0.07),transparent 70%);pointer-events:none}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,0.15);border:1px solid rgba(245,200,66,0.3);padding:7px 16px;border-radius:100px;font-family:var(--fs);font-size:12px;color:#f5c842;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px;animation:fadeUp .8s .2s forwards;opacity:0}
+.badge-dot{width:7px;height:7px;background:#f5c842;border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero-left{position:relative;z-index:2}
+.hero h1{font-family:var(--fd);font-size:clamp(36px,4.5vw,58px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-.5px;margin-bottom:22px;animation:fadeUp .9s .4s forwards;opacity:0}
+.hero h1 span{color:#f5c842;font-style:italic}
+.hero-sub{font-family:var(--fb);font-size:18px;color:rgba(255,255,255,0.72);line-height:1.8;max-width:500px;margin-bottom:36px;animation:fadeUp .9s .6s forwards;opacity:0}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .9s .8s forwards;opacity:0}
+.hbtn-p{padding:15px 32px;background:#f5c842;color:var(--navy2);font-family:var(--fs);font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all .3s}
+.hbtn-p:hover{background:#fff;transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.25)}
+.hbtn-s{padding:15px 32px;background:transparent;color:#fff;font-family:var(--fs);font-size:15px;font-weight:600;border:2px solid rgba(255,255,255,0.4);border-radius:10px;cursor:pointer;transition:all .3s}
+.hbtn-s:hover{border-color:#fff;background:rgba(255,255,255,0.1);transform:translateY(-3px)}
+.hero-trust{display:flex;gap:28px;margin-top:48px;padding-top:36px;border-top:1px solid rgba(255,255,255,0.15);animation:fadeUp .9s 1s forwards;opacity:0}
+.ht-item .ht-n{font-family:var(--fd);font-size:28px;font-weight:900;color:#f5c842;line-height:1}
+.ht-item .ht-l{font-family:var(--fs);font-size:12px;color:rgba(255,255,255,0.55);letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+
+
+/* ══ HERO VIDEO BG ══ */
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.13;z-index:0;pointer-events:none;filter:saturate(0.4) brightness(0.7)}
+
+/* ══ TYPEWRITER ══ */
+.typewriter-word{color:#f5c842;font-style:italic;display:inline-block;min-width:200px}
+.tw-cursor{display:inline-block;width:3px;height:0.85em;background:#f5c842;margin-left:3px;vertical-align:middle;animation:twBlink 0.75s step-end infinite}
+@keyframes twBlink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ══ WATCH MODAL BUTTON ══ */
+.hbtn-watch{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;background:rgba(255,255,255,0.08);color:#fff;font-family:var(--fs);font-size:15px;font-weight:600;border:2px solid rgba(255,255,255,0.25);border-radius:10px;cursor:pointer;transition:all .3s;backdrop-filter:blur(4px)}
+.hbtn-watch:hover{background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.6);transform:translateY(-3px)}
+.hbtn-play{width:28px;height:28px;background:#f5c842;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s}
+.hbtn-watch:hover .hbtn-play{transform:scale(1.15)}
+.hbtn-play-tri{width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent var(--navy2);margin-left:2px}
+
+/* ══ VIDEO MODAL ══ */
+.vid-modal{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .35s}
+.vid-modal.open{opacity:1;visibility:visible}
+.vid-backdrop{position:absolute;inset:0;background:rgba(10,20,40,0.88);backdrop-filter:blur(8px);cursor:pointer}
+.vid-box{position:relative;z-index:2;background:var(--navy2);border-radius:20px;overflow:hidden;width:min(860px,92vw);box-shadow:0 40px 120px rgba(0,0,0,0.6);transform:scale(0.9) translateY(20px);transition:transform .4s cubic-bezier(.22,.68,0,1.2)}
+.vid-modal.open .vid-box{transform:scale(1) translateY(0)}
+.vid-close{position:absolute;top:16px;right:16px;z-index:3;width:36px;height:36px;background:rgba(255,255,255,0.12);border:none;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}
+.vid-close:hover{background:rgba(255,255,255,0.25)}
+.vid-inner{aspect-ratio:16/9;background:linear-gradient(135deg,var(--navy2),var(--navy));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:48px}
+.vid-placeholder-icon{width:80px;height:80px;background:#f5c842;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.vid-placeholder-icon::after{content:'';width:0;height:0;border-style:solid;border-width:18px 0 18px 30px;border-color:transparent transparent transparent var(--navy2);margin-left:6px}
+.vid-placeholder-title{font-family:var(--fd);font-size:22px;font-weight:700;color:#fff}
+.vid-placeholder-sub{font-family:var(--fs);font-size:14px;color:rgba(255,255,255,0.6);text-align:center;max-width:400px;line-height:1.7}
+.vid-steps{display:flex;gap:32px;margin-top:8px}
+.vid-step{text-align:center}
+.vid-step-num{width:36px;height:36px;background:rgba(245,200,66,0.15);border:2px solid #f5c842;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:14px;font-weight:700;color:#f5c842;margin:0 auto 8px}
+.vid-step-lbl{font-family:var(--fs);font-size:12px;color:rgba(255,255,255,0.65);letter-spacing:.5px}
+
+/* ══ ROTATING TESTIMONIAL ══ */
+.hero-testi{margin-top:32px;padding:18px 22px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;max-width:480px;animation:fadeUp .9s 1.1s forwards;opacity:0;backdrop-filter:blur(4px);transition:all .4s}
+.hero-testi-quote{font-family:var(--fb);font-style:italic;font-size:14px;color:rgba(255,255,255,0.82);line-height:1.7;margin-bottom:10px;min-height:42px}
+.hero-testi-author{display:flex;align-items:center;gap:10px}
+.hero-testi-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid rgba(245,200,66,0.4);flex-shrink:0}
+.hero-testi-name{font-family:var(--fs);font-size:12px;font-weight:700;color:#f5c842}
+.hero-testi-role{font-family:var(--fs);font-size:11px;color:rgba(255,255,255,0.5)}
+.hero-testi-dots{display:flex;gap:6px;margin-left:auto}
+.ht-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:background .3s}
+.ht-dot.active{background:#f5c842}
+
+/* HERO RIGHT — card stack */
+.hero-right{position:relative;z-index:2;animation:fadeUp .9s .5s forwards;opacity:0}
+.card-stack{position:relative;width:360px;margin:0 auto}
+.bank-card{width:320px;border-radius:18px;padding:28px;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);transition:transform .4s,box-shadow .4s}
+.bank-card:hover{transform:translateY(-8px);box-shadow:0 32px 80px rgba(0,0,0,0.5)}
+.bc-debit{background:linear-gradient(135deg,#1a3a5c,#2563a8);margin:0 auto 0;animation:cardFloat 5s ease-in-out infinite}
+.bc-credit{background:linear-gradient(135deg,#7b1c3e,#c0392b);margin:20px auto 0;animation:cardFloat 5s 1.2s ease-in-out infinite}
+@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.bc-chip{width:36px;height:28px;background:linear-gradient(135deg,#f5c842,#e0a800);border-radius:6px;margin-bottom:20px}
+.bc-network{position:absolute;top:22px;right:22px;font-family:var(--fs);font-size:20px;font-weight:900;color:rgba(255,255,255,.6);letter-spacing:-2px}
+.bc-num{font-family:'Courier New',monospace;font-size:16px;letter-spacing:3px;color:rgba(255,255,255,.85);margin-bottom:16px}
+.bc-bottom{display:flex;justify-content:space-between;align-items:flex-end}
+.bc-name{font-family:var(--fs);font-size:13px;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:1px;text-transform:uppercase}
+.bc-exp{font-family:var(--fs);font-size:11px;color:rgba(255,255,255,.6)}
+.bc-type{position:absolute;bottom:24px;right:22px;font-family:var(--fs);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.card-badge{position:absolute;top:-12px;right:20px;background:#f5c842;color:var(--navy2);font-family:var(--fs);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;letter-spacing:1px}
+
+/* ══ MARQUEE ══ */
+.mq{background:var(--navy);padding:12px 0;overflow:hidden;white-space:nowrap}
+.mq-t{display:inline-flex;gap:56px;animation:mq 26s linear infinite}
+.mq-t:hover{animation-play-state:paused}
+.mq-i{font-family:var(--fs);font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:10px;transition:color .3s;cursor:default}
+.mq-i:hover{color:#f5c842}
+.mq-i b{color:#f5c842;font-weight:600}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══ SECTIONS ══ */
+.sec{padding:96px 5%}
+.sec-bg{background:var(--offwhite)}
+.sec-navy{background:var(--navy);color:#fff}
+.sec-sky{background:var(--sky)}
+
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--fs);font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+.kicker::before{content:'';width:20px;height:2px;background:currentColor;flex-shrink:0}
+.k-blue{color:var(--blue)}
+.k-teal{color:var(--teal)}
+.k-green{color:var(--green)}
+.k-amber{color:var(--amber)}
+.k-white{color:#f5c842}
+.sec-title{font-family:var(--fd);font-size:clamp(26px,3.2vw,42px);font-weight:900;line-height:1.15;letter-spacing:-.3px;margin-bottom:14px}
+.sec-sub{font-family:var(--fb);font-size:16px;color:var(--text3);max-width:560px;line-height:1.85}
+.sec-navy .sec-sub{color:rgba(255,255,255,0.65)}
+.sec-navy .sec-title{color:#fff}
+.txt-center{text-align:center}
+.txt-center .sec-sub{margin:0 auto}
+
+/* ══ ABOUT ══ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-img{position:relative;border-radius:16px;overflow:hidden;box-shadow:var(--shadow2)}
+.about-img img{width:100%;height:420px;object-fit:cover;transition:transform .8s ease,filter .8s ease;filter:saturate(.85)}
+.about-img:hover img{transform:scale(1.04);filter:saturate(1)}
+.about-img-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(to top,rgba(15,39,66,0.9),transparent)}
+.aio-stat{display:flex;gap:28px}
+.aio-s .n{font-family:var(--fd);font-size:28px;font-weight:900;color:#f5c842;line-height:1}
+.aio-s .l{font-family:var(--fs);font-size:11px;color:rgba(255,255,255,.7);letter-spacing:1px;text-transform:uppercase}
+.bq{border-left:4px solid var(--blue);padding:20px 24px;background:var(--sky);border-radius:0 8px 8px 0;margin:24px 0}
+.bq p{font-family:var(--fb);font-style:italic;font-size:17px;color:var(--navy);line-height:1.7;margin-bottom:8px}
+.bq cite{font-family:var(--fs);font-size:12px;color:var(--blue);letter-spacing:1px;text-transform:uppercase;font-weight:600;font-style:normal}
+
+/* ══ STATS STRIP ══ */
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gray);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.stat-box{background:var(--white);padding:40px 28px;text-align:center;transition:all .4s;position:relative;overflow:hidden;cursor:default}
+.stat-box::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;transform:scaleX(0);transition:transform .5s;transform-origin:left}
+.stat-box.c1::before{background:var(--blue)}
+.stat-box.c2::before{background:var(--teal)}
+.stat-box.c3::before{background:var(--green)}
+.stat-box.c4::before{background:var(--amber)}
+.stat-box:hover{transform:translateY(-4px);box-shadow:var(--shadow2)}
+.stat-box.bar-on::before{transform:scaleX(1)}
+.stat-n{font-family:var(--fd);font-size:48px;font-weight:900;line-height:1;margin-bottom:8px}
+.c1 .stat-n{color:var(--blue)}.c2 .stat-n{color:var(--teal)}.c3 .stat-n{color:var(--green)}.c4 .stat-n{color:var(--amber)}
+.stat-l{font-family:var(--fs);font-size:14px;color:var(--text3);font-weight:500}
+
+/* ══ ALL SERVICES — coloured category cards ══ */
+.svc-categories{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.svc-cat{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:all .45s cubic-bezier(.22,.68,0,1.2);cursor:default;position:relative}
+.svc-cat:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 24px 56px rgba(26,58,92,0.2)}
+.svc-cat-header{padding:24px 24px 18px;position:relative;overflow:hidden}
+.svc-cat-header::after{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:rgba(255,255,255,0.1);border-radius:50%;transition:transform .5s}
+.svc-cat:hover .svc-cat-header::after{transform:scale(2.5)}
+/* ripple ring on hover */
+.svc-cat-header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,0.15),transparent 60%);opacity:0;transition:opacity .4s}
+.svc-cat:hover .svc-cat-header::before{opacity:1}
+.cat-icon{font-size:32px;margin-bottom:10px;display:block;transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.svc-cat:hover .cat-icon{transform:scale(1.25) rotate(-8deg) translateY(-4px)}
+.cat-title{font-family:var(--fd);font-size:20px;font-weight:700;color:#fff;line-height:1.2}
+.cat-sub{font-family:var(--fs);font-size:13px;color:rgba(255,255,255,.75);margin-top:4px}
+.svc-cat-body{background:var(--white);padding:20px 24px}
+.svc-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--gray);font-family:var(--fs);font-size:14px;color:var(--text2);transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+.svc-item:last-child{border-bottom:none}
+.svc-item::before{content:'→';color:var(--gray-md);font-size:12px;transition:all .3s}
+.svc-item::after{content:'';position:absolute;left:0;top:0;height:100%;width:3px;background:var(--blue);transform:scaleY(0);transform-origin:bottom;transition:transform .25s}
+.svc-item:hover{color:var(--navy);padding-left:10px;background:var(--sky)}
+.svc-item:hover::before{color:var(--blue);transform:translateX(2px)}
+.svc-item:hover::after{transform:scaleY(1)}
+/* Category colours */
+.cat-everyday .svc-cat-header{background:linear-gradient(135deg,#1a3a5c,#2563a8)}
+.cat-everyday .svc-item:hover::after{background:var(--blue)}
+.cat-cards .svc-cat-header{background:linear-gradient(135deg,#7b1c3e,#c0392b)}
+.cat-cards .svc-item:hover{background:var(--coral-lt)}.cat-cards .svc-item:hover::after{background:var(--coral)}
+.cat-savings .svc-cat-header{background:linear-gradient(135deg,#1d6e3c,#27ae60)}
+.cat-savings .svc-item:hover{background:var(--green-lt)}.cat-savings .svc-item:hover::after{background:var(--green)}
+.cat-borrow .svc-cat-header{background:linear-gradient(135deg,#5b3fa0,#8e5be0)}
+.cat-borrow .svc-item:hover{background:var(--purple-lt)}.cat-borrow .svc-item:hover::after{background:var(--purple)}
+.cat-invest .svc-cat-header{background:linear-gradient(135deg,#c47d0a,#f39c12)}
+.cat-invest .svc-item:hover{background:var(--amber-lt)}.cat-invest .svc-item:hover::after{background:var(--amber)}
+.cat-future .svc-cat-header{background:linear-gradient(135deg,#0e7c7b,#1abc9c)}
+.cat-future .svc-item:hover{background:var(--teal-lt)}.cat-future .svc-item:hover::after{background:var(--teal)}
+.cat-student .svc-cat-header{background:linear-gradient(135deg,#16537e,#2196f3)}
+.cat-student .svc-item:hover{background:var(--sky)}.cat-student .svc-item:hover::after{background:var(--blue)}
+.cat-business .svc-cat-header{background:linear-gradient(135deg,#2c3e50,#546e7a)}
+.cat-business .svc-item:hover{background:var(--gray-lt)}.cat-business .svc-item:hover::after{background:var(--gray-dk)}
+.cat-insurance .svc-cat-header{background:linear-gradient(135deg,#6d4c41,#a1735a)}
+.cat-insurance .svc-item:hover{background:var(--burg-lt)}.cat-insurance .svc-item:hover::after{background:var(--burgundy)}
+/* service count badge animation */
+.svc-cat-header .cat-count{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);color:#fff;font-family:var(--fs);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:1px;opacity:0;transform:translateY(-4px);transition:all .35s}
+.svc-cat:hover .cat-count{opacity:1;transform:translateY(0)}
+
+/* ══ FEATURED PRODUCTS ══ */
+.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:56px}
+.prod-card{border-radius:var(--radius);border:2px solid var(--gray);background:var(--white);overflow:hidden;transition:all .4s;position:relative}
+.prod-card:hover{border-color:transparent;box-shadow:var(--shadow2);transform:translateY(-4px)}
+.prod-card-img{height:180px;overflow:hidden;position:relative}
+.prod-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s,filter .7s;filter:saturate(.8)}
+.prod-card:hover .prod-card-img img{transform:scale(1.06);filter:saturate(1)}
+.prod-card-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(26,58,92,0.7),transparent)}
+.prod-badge{position:absolute;top:14px;left:14px;padding:5px 12px;border-radius:100px;font-family:var(--fs);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;z-index:2}
+.pb-blue{background:var(--blue);color:#fff}
+.pb-red{background:var(--coral);color:#fff}
+.pb-green{background:var(--green);color:#fff}
+.pb-amber{background:var(--amber);color:#fff}
+.pb-purple{background:var(--purple);color:#fff}
+.pb-teal{background:var(--teal);color:#fff}
+.prod-body{padding:22px 24px}
+.prod-title{font-family:var(--fd);font-size:19px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.prod-desc{font-family:var(--fs);font-size:14px;color:var(--text3);line-height:1.7;margin-bottom:16px}
+.prod-rate{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.rate-val{font-family:var(--fd);font-size:28px;font-weight:900;color:var(--blue);line-height:1}
+.rate-label{font-family:var(--fs);font-size:12px;color:var(--text3);line-height:1.3}
+.prod-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy);color:#fff;font-family:var(--fs);font-size:13px;font-weight:600;border-radius:8px;border:none;cursor:pointer;transition:all .3s}
+.prod-btn:hover{background:var(--blue);transform:translateX(4px)}
+.prod-btn::after{content:'→';transition:transform .3s}
+.prod-card:hover .prod-btn::after{transform:translateX(4px)}
+
+/* ══ DEBIT/CREDIT CARD SHOWCASE ══ */
+.card-showcase{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.card-visual{position:relative;height:320px;display:flex;align-items:center;justify-content:center}
+.showcase-card{width:320px;height:190px;border-radius:18px;padding:28px;position:relative;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.35);transition:transform .5s,box-shadow .5s;cursor:default}
+.showcase-card:hover{transform:perspective(600px) rotateY(-8deg) translateY(-8px);box-shadow:0 40px 80px rgba(0,0,0,0.4)}
+.card-glow{position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;opacity:.3;filter:blur(40px)}
+.sc-debit{background:linear-gradient(135deg,#1a3a5c 0%,#245080 60%,#2563a8 100%)}
+.sc-debit .card-glow{background:#4ec9e0}
+.sc-credit{background:linear-gradient(135deg,#7b1c3e 0%,#a0274f 60%,#c0392b 100%)}
+.sc-credit .card-glow{background:#f5c842}
+.sc-gold{background:linear-gradient(135deg,#7a5c00,#c8a010,#f5c842)}
+.sc-gold .card-glow{background:#fff8e0}
+.showcase-card .chip{width:38px;height:30px;background:linear-gradient(135deg,#f5c842,#e0a000);border-radius:6px;margin-bottom:18px}
+.showcase-card .net{position:absolute;top:24px;right:24px;font-size:22px;font-weight:900;color:rgba(255,255,255,.55);letter-spacing:-2px}
+.showcase-card .num{font-family:'Courier New',monospace;font-size:15px;color:rgba(255,255,255,.8);letter-spacing:3px;margin-bottom:14px}
+.showcase-card .cname{font-family:var(--fs);font-size:13px;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:1px;text-transform:uppercase}
+.showcase-card .cexp{font-family:var(--fs);font-size:11px;color:rgba(255,255,255,.55);margin-top:2px}
+.showcase-card .clabel{position:absolute;bottom:22px;right:22px;font-family:var(--fs);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.card-tabs{display:flex;gap:8px;margin-bottom:28px}
+.ctab{padding:8px 18px;border-radius:100px;border:2px solid var(--gray);background:var(--white);font-family:var(--fs);font-size:13px;font-weight:600;cursor:pointer;transition:all .3s;color:var(--text2)}
+.ctab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.card-info{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.ci-row{display:flex;align-items:center;gap:12px;font-family:var(--fs);font-size:14px;color:var(--text2)}
+.ci-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ci-b{background:var(--sky)}.ci-g{background:var(--green-lt)}.ci-a{background:var(--amber-lt)}.ci-p{background:var(--purple-lt)}.ci-t{background:var(--teal-lt)}
+.ci-text{line-height:1.3}
+.ci-text strong{display:block;font-weight:600;color:var(--navy);font-size:13px}
+.ci-text span{font-size:12px;color:var(--text3)}
+
+/* ══ PENSION / LIFE PLANNING ══ */
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.plan-card{border-radius:var(--radius);padding:32px 28px;border:2px solid transparent;transition:all .4s;cursor:default;position:relative;overflow:hidden}
+.plan-card::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;transition:height .4s}
+.plan-card:hover{transform:translateY(-6px);box-shadow:var(--shadow2)}
+.plan-card:hover::after{height:6px}
+.pc-retirement{background:var(--amber-lt);border-color:var(--amber)}.pc-retirement::after{background:var(--amber)}
+.pc-student{background:var(--sky);border-color:var(--blue)}.pc-student::after{background:var(--blue)}
+.pc-children{background:var(--green-lt);border-color:var(--green)}.pc-children::after{background:var(--green)}
+.pc-life{background:var(--teal-lt);border-color:var(--teal)}.pc-life::after{background:var(--teal)}
+.pc-senior{background:var(--purple-lt);border-color:var(--purple)}.pc-senior::after{background:var(--purple)}
+.pc-will{background:var(--burg-lt);border-color:var(--burgundy)}.pc-will::after{background:var(--burgundy)}
+.plan-icon{font-size:40px;margin-bottom:16px;display:block;transition:transform .4s}
+.plan-card:hover .plan-icon{transform:scale(1.1) rotate(-3deg)}
+.plan-title{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.plan-desc{font-family:var(--fs);font-size:14px;color:var(--text3);line-height:1.7;margin-bottom:16px}
+.plan-link{font-family:var(--fs);font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;transition:gap .3s;display:flex;align-items:center;gap:4px}
+.plan-link:hover{gap:10px}
+
+/* ══ BRANCH STRIP — enhanced ══ */
+.branch-section-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:20px}
+.branch-stats-row{display:flex;gap:32px}
+.bsr-item .bsr-n{font-family:var(--fd);font-size:32px;font-weight:900;color:var(--blue);line-height:1}
+.bsr-item .bsr-l{font-family:var(--fs);font-size:12px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.branch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:0}
+.branch-card{border-radius:var(--radius);overflow:hidden;position:relative;height:260px;box-shadow:var(--shadow);transition:all .5s cubic-bezier(.22,.68,0,1.1);cursor:pointer}
+.branch-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 28px 64px rgba(26,58,92,0.25);z-index:2}
+.branch-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease,filter .6s ease;filter:saturate(.6) brightness(.95)}
+.branch-card:hover img{transform:scale(1.1);filter:saturate(1) brightness(1)}
+.branch-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(15,39,66,.9) 0%,rgba(15,39,66,.3) 50%,rgba(15,39,66,.0) 100%);transition:background .4s}
+.branch-card:hover::after{background:linear-gradient(to top,rgba(15,39,66,.95) 0%,rgba(15,39,66,.4) 60%,rgba(15,39,66,.05) 100%)}
+.branch-info{position:absolute;bottom:0;left:0;right:0;padding:22px 18px;z-index:2;transform:translateY(0);transition:transform .35s}
+.branch-card:hover .branch-info{transform:translateY(-6px)}
+.bi-city{font-family:var(--fd);font-size:18px;font-weight:700;color:#fff;margin-bottom:2px}
+.bi-count{font-family:var(--fs);font-size:12px;color:#f5c842;letter-spacing:1px;text-transform:uppercase;font-weight:600}
+.bi-open{font-family:var(--fs);font-size:11px;color:rgba(255,255,255,.7);margin-top:4px;opacity:0;transform:translateY(6px);transition:all .35s .05s}
+.branch-card:hover .bi-open{opacity:1;transform:translateY(0)}
+.branch-tag{position:absolute;top:12px;right:12px;background:rgba(26,58,92,.85);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:var(--fs);font-size:10px;font-weight:600;letter-spacing:1px;padding:4px 10px;border-radius:100px;z-index:3;opacity:0;transform:translateY(-8px);transition:all .4s}
+.branch-card:hover .branch-tag{opacity:1;transform:translateY(0)}
+/* pin icon on top left */
+.branch-pin{position:absolute;top:12px;left:14px;z-index:3;font-size:18px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5));transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.branch-card:hover .branch-pin{transform:translateY(-5px) scale(1.2)}
+/* world map teaser below grid */
+.branch-globe{margin-top:40px;background:linear-gradient(135deg,var(--navy2),var(--navy));border-radius:16px;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.bg-text .bg-title{font-family:var(--fd);font-size:22px;font-weight:700;color:#fff;margin-bottom:6px}
+.bg-text p{font-family:var(--fs);font-size:14px;color:rgba(255,255,255,.65);max-width:420px;line-height:1.7}
+.bg-countries{display:flex;flex-wrap:wrap;gap:8px;max-width:360px}
+.bg-country{padding:5px 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:100px;font-family:var(--fs);font-size:12px;color:rgba(255,255,255,.8);transition:all .3s;cursor:default}
+.bg-country:hover{background:rgba(245,200,66,.2);border-color:#f5c842;color:#f5c842}
+
+/* ══ TESTIMONIALS ══ */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.testi-card{background:var(--white);border-radius:var(--radius);padding:32px 28px;border:2px solid var(--gray);transition:all .4s;cursor:default;position:relative}
+.testi-card:hover{border-color:transparent;box-shadow:var(--shadow2);transform:translateY(-4px)}
+.testi-stars{color:#f5c842;font-size:16px;margin-bottom:12px;letter-spacing:2px}
+.testi-quote{font-family:var(--fb);font-style:italic;font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:20px}
+.testi-marks{font-family:var(--fd);font-size:48px;color:var(--blue);line-height:.8;margin-bottom:8px;opacity:.25;position:absolute;top:20px;right:24px;transition:opacity .4s}
+.testi-card:hover .testi-marks{opacity:.5}
+.testi-divider{width:32px;height:2px;background:var(--blue);margin-bottom:14px;transition:width .4s}
+.testi-card:hover .testi-divider{width:56px}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--gray)}
+.testi-avatar img{width:100%;height:100%;object-fit:cover;filter:saturate(.8)}
+.testi-name{font-family:var(--fs);font-size:14px;font-weight:700;color:var(--navy)}
+.testi-role{font-family:var(--fs);font-size:12px;color:var(--text3)}
+
+/* ══ APP SECTION ══ */
+.app-grid{display:grid;grid-template-columns:1fr 400px;gap:72px;align-items:center}
+.app-feats{display:flex;flex-direction:column;gap:0;margin-top:36px}
+.af-row{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--gray);transition:all .35s;cursor:default}
+.af-row:first-child{border-top:1px solid var(--gray)}
+.af-row:hover{padding-left:8px;background:var(--sky);padding-right:8px;border-radius:10px;border-color:transparent;margin:0 -8px}
+.af-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;transition:transform .3s}
+.af-row:hover .af-icon{transform:scale(1.1) rotate(-5deg)}
+.af-title{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.af-desc{font-family:var(--fs);font-size:13px;color:var(--text3);line-height:1.65}
+.phone-wrap{position:relative;display:flex;justify-content:center}
+.phone-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:280px;height:280px;background:radial-gradient(circle,rgba(37,99,168,.12),transparent 70%);border-radius:50%;animation:pglow 4s ease-in-out infinite}
+@keyframes pglow{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.2)}}
+.phone{width:230px;background:var(--navy2);border-radius:34px;padding:18px 14px;box-shadow:0 40px 80px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.06);animation:pfloat 5s ease-in-out infinite;position:relative;z-index:2}
+@keyframes pfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.ph-notch{width:64px;height:18px;background:var(--navy2);border-radius:100px;margin:0 auto 14px;border:1px solid rgba(255,255,255,.06)}
+.ph-lbl{font-family:var(--fs);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);text-align:center;margin-bottom:2px}
+.ph-bal{font-family:var(--fd);font-size:26px;font-weight:900;color:#fff;text-align:center;margin-bottom:12px}
+.ph-div{height:1px;background:rgba(255,255,255,.08);margin:10px 0}
+.ph-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0}
+.ph-rn{font-family:var(--fs);font-size:11px;color:rgba(255,255,255,.5)}
+.ph-ra{font-family:var(--fd);font-size:12px;font-weight:700}
+.ph-cr{color:#5cb85c}.ph-dr{color:#ff8080}
+.ph-btns{display:flex;gap:6px;margin-top:12px}
+.ph-btn{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 4px;text-align:center;font-family:var(--fs);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);cursor:pointer;transition:all .25s}
+.ph-btn:hover{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.3)}
+
+/* ══ AUTH ══ */
+.auth-wrap{display:grid;grid-template-columns:1fr 1fr;border-radius:16px;overflow:hidden;box-shadow:var(--shadow2);margin-top:56px;border:2px solid var(--gray)}
+.auth-left{position:relative;overflow:hidden;min-height:560px;background:linear-gradient(135deg,#0f2742 0%,#1a3a5c 50%,#245080 100%)}
+.auth-left img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.25) saturate(.5);transition:filter 6s}
+.auth-left:hover img{filter:brightness(.3) saturate(.65)}
+.auth-left::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,39,66,0.85),rgba(37,99,168,0.4))}
+.auth-over{position:relative;z-index:2;padding:56px;height:100%;display:flex;flex-direction:column;justify-content:center}
+.auth-over h3{font-family:var(--fd);font-size:28px;font-style:italic;font-weight:400;color:#fff;line-height:1.4;margin-bottom:18px}
+.auth-over p{font-family:var(--fs);font-size:15px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:28px}
+.ck-list{display:flex;flex-direction:column;gap:12px}
+.ck-item{display:flex;align-items:center;gap:12px;font-family:var(--fs);font-size:14px;color:rgba(255,255,255,.85);transition:color .3s}
+.ck-item:hover{color:#fff}
+.ck-mark{width:22px;height:22px;background:rgba(245,200,66,.2);border:1px solid #f5c842;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#f5c842;flex-shrink:0;transition:all .3s}
+.ck-item:hover .ck-mark{background:#f5c842;color:var(--navy2)}
+.auth-right{background:var(--white);padding:56px;position:relative;overflow:hidden}
+/* ══ OTP BOXES ══ */
+.otp-box{width:42px;height:48px;border:2px solid var(--gray);border-radius:10px;text-align:center;font-size:20px;font-weight:700;font-family:var(--fd);color:var(--navy2);outline:none;transition:border .2s}
+.otp-box:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,168,0.12)}
+#forgot-modal.open{opacity:1!important;visibility:visible!important}
+#forgot-modal.open #forgot-box{transform:scale(1) translateY(0)!important}
+
+/* Bank Worker SVG scene */
+.bank-worker-scene{position:absolute;bottom:0;right:0;width:180px;height:100%;pointer-events:none;z-index:3;opacity:.85}
+.auth-left>*:not(.bank-worker-scene){position:relative;z-index:4}
+@keyframes headBob{0%,100%{transform:translateY(0) rotate(0deg)}35%{transform:translateY(-4px) rotate(2.5deg)}65%{transform:translateY(-2px) rotate(-1deg)}}
+@keyframes typing{0%,100%{transform:translateX(0)}20%{transform:translateX(2px)}40%{transform:translateX(-2px)}60%{transform:translateX(1.5px)}80%{transform:translateX(-1px)}}
+@keyframes armL{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-6deg)}}
+@keyframes armR{0%,100%{transform:rotate(0deg)}50%{transform:rotate(7deg)}}
+@keyframes screenGlow{0%,100%{opacity:.55}50%{opacity:.9}}
+@keyframes coffeeRise{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-10px);opacity:.9}}
+@keyframes chairRock{0%,100%{transform:rotate(0deg)}50%{transform:rotate(.5deg)}}
+@keyframes dataLine{0%{transform:scaleX(0);opacity:0}100%{transform:scaleX(1);opacity:1}}
+/* Auth form animations */
+.fld input:focus,.fld select:focus{transform:translateX(4px)}
+.fb:not(.hide){animation:formReveal .45s ease forwards}
+@keyframes formReveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.atab.on{animation:tabPop .3s ease}
+@keyframes tabPop{0%{transform:scale(.96)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+.fsub{position:relative;overflow:hidden}
+.fsub::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:translateX(-100%);transition:transform .5s}
+.fsub:hover::before{transform:translateX(100%)}
+.tab-row{display:flex;gap:4px;background:var(--gray-lt);border-radius:10px;padding:4px;margin-bottom:32px}
+.atab{flex:1;padding:10px;background:transparent;border:none;border-radius:8px;font-family:var(--fs);font-size:14px;font-weight:600;color:var(--text3);cursor:pointer;transition:all .3s}
+.atab.on{background:#fff;color:var(--navy);box-shadow:var(--shadow)}
+.fld{margin-bottom:18px}
+.fld label{display:block;font-family:var(--fs);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.fld input,.fld select{width:100%;padding:13px 16px;background:var(--gray-lt);border:2px solid var(--gray);border-radius:8px;color:var(--text);font-family:var(--fs);font-size:15px;outline:none;transition:all .3s}
+.fld input:focus,.fld select:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(37,99,168,0.1)}
+.fld input::placeholder{color:var(--gray-md)}
+.fb{display:flex;flex-direction:column}.fb.hide{display:none}
+.fsub{width:100%;padding:14px;background:var(--navy);color:#fff;font-family:var(--fs);font-size:14px;font-weight:700;border:none;border-radius:8px;cursor:pointer;transition:all .35s;margin-top:4px;letter-spacing:.5px}
+.fsub:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 10px 32px rgba(26,58,92,.3)}
+
+/* ══ CONTACT ══ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.contact-img{border-radius:var(--radius);overflow:hidden;height:200px;margin-top:24px;box-shadow:var(--shadow)}
+.contact-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s,filter .6s;filter:saturate(.8)}
+.contact-img:hover img{transform:scale(1.04);filter:saturate(1)}
+.addr-box{background:var(--sky);border:2px solid var(--blue);border-radius:var(--radius);padding:24px;margin-top:20px}
+.addr-box strong{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--navy);display:block;margin-bottom:8px}
+.addr-box p{font-family:var(--fs);font-size:14px;color:var(--text2);line-height:1.9}
+
+/* Social media links — redesigned to be attractive */
+.social-section{margin-top:28px}
+.social-section-title{font-family:var(--fs);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text3);font-weight:700;margin-bottom:16px}
+.social-links{display:flex;flex-direction:column;gap:12px}
+.social-link{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:14px;text-decoration:none;transition:all .35s cubic-bezier(.22,.68,0,1.2);border:2px solid transparent;position:relative;overflow:hidden}
+.social-link::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .35s}
+.social-link:hover{transform:translateX(8px) scale(1.02);border-color:transparent}
+.social-link:hover::before{opacity:1}
+.sl-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.social-link:hover .sl-icon{transform:scale(1.15) rotate(-5deg)}
+.sl-body{flex:1}
+.sl-platform{font-family:var(--fs);font-size:13px;font-weight:700;transition:color .3s}
+.sl-handle{font-family:var(--fs);font-size:12px;margin-top:1px;transition:color .3s}
+.sl-arrow{font-size:16px;transition:transform .35s}
+.social-link:hover .sl-arrow{transform:translateX(6px)}
+
+/* Instagram */
+.sl-insta{background:linear-gradient(135deg,#fdf0f8,#fce4f5)}
+.sl-insta .sl-icon{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4)}
+.sl-insta .sl-platform{color:#8134af}
+.sl-insta .sl-handle{color:#b869c2}
+.sl-insta::before{background:linear-gradient(135deg,rgba(245,133,41,.08),rgba(221,42,123,.1),rgba(129,52,175,.1))}
+.sl-insta:hover{border-color:#dd2a7b40}
+
+/* LinkedIn */
+.sl-linkedin{background:linear-gradient(135deg,#f0f7ff,#deeefa)}
+.sl-linkedin .sl-icon{background:#0077b5;color:#fff}
+.sl-linkedin .sl-platform{color:#0077b5}
+.sl-linkedin .sl-handle{color:#4a9fc5}
+.sl-linkedin::before{background:rgba(0,119,181,.07)}
+.sl-linkedin:hover{border-color:#0077b540}
+
+/* Twitter/X */
+.sl-twitter{background:linear-gradient(135deg,#f5f5f5,#eaeaea)}
+.sl-twitter .sl-icon{background:#000;color:#fff;font-weight:900;font-family:var(--fs)}
+.sl-twitter .sl-platform{color:#000}
+.sl-twitter .sl-handle{color:#555}
+.sl-twitter::before{background:rgba(0,0,0,.05)}
+.sl-twitter:hover{border-color:#00000025}
+
+/* Facebook */
+.sl-facebook{background:linear-gradient(135deg,#f0f4ff,#dce6ff)}
+.sl-facebook .sl-icon{background:#1877f2;color:#fff}
+.sl-facebook .sl-platform{color:#1877f2}
+.sl-facebook .sl-handle{color:#5b9cf6}
+.sl-facebook::before{background:rgba(24,119,242,.07)}
+.sl-facebook:hover{border-color:#1877f240}
+
+/* Branch finder special link */
+.sl-branch{background:linear-gradient(135deg,var(--amber-lt),#fef0cc)}
+.sl-branch .sl-icon{background:var(--amber);color:#fff}
+.sl-branch .sl-platform{color:var(--amber)}
+.sl-branch .sl-handle{color:#c88c25}
+.sl-branch::before{background:rgba(196,125,10,.07)}
+.sl-branch:hover{border-color:#c47d0a40}
+
+.cfr{display:flex;flex-direction:column;gap:0}
+.cfr .fld textarea{width:100%;padding:13px 16px;background:var(--gray-lt);border:2px solid var(--gray);border-radius:8px;color:var(--text);font-family:var(--fs);font-size:15px;outline:none;resize:vertical;min-height:120px;transition:all .3s}
+.cfr .fld textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(37,99,168,.1)}
+.cfr .fld textarea::placeholder{color:var(--gray-md)}
+/* contact form field animation */
+.cfr .fld{transition:transform .3s}
+.cfr .fld:focus-within{transform:translateX(4px)}
+
+/* ══ FOOTER ══ */
+.ft{background:var(--navy2);color:rgba(255,255,255,.75);padding:72px 5% 0}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ft-brand .ft-logo{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;margin-bottom:4px}
+.ft-brand .ft-tagline{font-family:var(--fs);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
+.ft-brand p{font-family:var(--fs);font-size:13px;line-height:1.9;max-width:260px}
+.ft-col-title{font-family:var(--fs);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#f5c842;margin-bottom:16px;font-weight:700}
+.ft-col a{display:block;font-family:var(--fs);font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;padding:4px 0;transition:all .25s}
+.ft-col a:hover{color:#fff;padding-left:4px}
+.ft-bot{padding:20px 0;display:flex;justify-content:space-between;align-items:center}
+.ft-copy{font-family:var(--fs);font-size:12px;color:rgba(255,255,255,.4)}
+.ft-soc{display:flex;gap:12px}
+.ft-soc a{width:36px;height:36px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);text-decoration:none;font-size:15px;transition:all .3s}
+.ft-soc a:hover{background:#f5c842;border-color:#f5c842;color:var(--navy2);transform:translateY(-2px)}
+
+/* ══ CHAT ══ */
+.chat-fab{position:fixed;bottom:28px;right:28px;z-index:600;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.ctrig{width:56px;height:56px;background:var(--navy);border-radius:50%;border:3px solid #f5c842;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;box-shadow:0 8px 32px rgba(26,58,92,.4);transition:all .3s;animation:ctPulse 3s ease-in-out infinite}
+@keyframes ctPulse{0%,100%{box-shadow:0 8px 32px rgba(26,58,92,.4)}50%{box-shadow:0 8px 48px rgba(37,99,168,.6)}}
+.ctrig:hover{transform:scale(1.1);background:var(--blue)}
+.cpanel{width:340px;background:#fff;border-radius:16px;border:1px solid var(--gray);overflow:hidden;display:none;box-shadow:0 24px 72px rgba(26,58,92,.2);animation:cpIn .3s ease}
+@keyframes cpIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.cph{padding:16px 20px;background:var(--navy);display:flex;justify-content:space-between;align-items:center}
+.cph-t{font-family:var(--fd);font-size:15px;font-weight:700;color:#fff}
+.cph-s{font-family:var(--fs);font-size:11px;color:#5cb85c;font-weight:600}
+.cph-x{background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:18px;transition:color .2s}
+.cph-x:hover{color:#fff}
+.cpm{height:240px;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px;background:var(--gray-lt)}
+.cpm::-webkit-scrollbar{width:4px}
+.cpm::-webkit-scrollbar-thumb{background:var(--gray);border-radius:2px}
+.cm{padding:10px 14px;font-family:var(--fs);font-size:13px;line-height:1.6;max-width:86%;border-radius:12px;animation:cmIn .3s ease}
+@keyframes cmIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.cm.bot{background:#fff;border:1px solid var(--gray);color:var(--text2);align-self:flex-start;border-radius:12px 12px 12px 2px}
+.cm.user{background:var(--navy);color:#fff;align-self:flex-end;border-radius:12px 12px 2px 12px}
+.cpi{padding:10px 12px;display:flex;gap:8px;background:#fff;border-top:1px solid var(--gray)}
+.cpi input{flex:1;padding:9px 12px;background:var(--gray-lt);border:2px solid var(--gray);border-radius:8px;color:var(--text);font-family:var(--fs);font-size:13px;outline:none;transition:border .25s}
+.cpi input:focus{border-color:var(--blue)}
+.cpi-s{padding:9px 16px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:var(--fs);font-size:12px;font-weight:700;cursor:pointer;transition:background .25s}
+.cpi-s:hover{background:var(--blue)}
+
+/* ══ REVEAL ══ */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.rv.on{opacity:1;transform:none}
+.rl{opacity:0;transform:translateX(-28px);transition:opacity .75s ease,transform .75s ease}
+.rl.on{opacity:1;transform:none}
+.rr{opacity:0;transform:translateX(28px);transition:opacity .75s ease,transform .75s ease}
+.rr.on{opacity:1;transform:none}
+.stagger>*{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.stagger.on>*:nth-child(1){opacity:1;transform:none;transition-delay:.0s}
+.stagger.on>*:nth-child(2){opacity:1;transform:none;transition-delay:.1s}
+.stagger.on>*:nth-child(3){opacity:1;transform:none;transition-delay:.2s}
+.stagger.on>*:nth-child(4){opacity:1;transform:none;transition-delay:.3s}
+.stagger.on>*:nth-child(5){opacity:1;transform:none;transition-delay:.4s}
+.stagger.on>*:nth-child(6){opacity:1;transform:none;transition-delay:.5s}
+.stagger.on>*:nth-child(7){opacity:1;transform:none;transition-delay:.6s}
+.stagger.on>*:nth-child(8){opacity:1;transform:none;transition-delay:.7s}
+.stagger.on>*:nth-child(9){opacity:1;transform:none;transition-delay:.8s}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══ HAMBURGER ══ */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:6px;transition:background .2s}
+.hamburger:hover{background:var(--sky)}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--navy);border-radius:2px;transition:all .35s cubic-bezier(.22,.68,0,1.2)}
+.hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* ══ MOBILE NAV ══ */
+@media(max-width:768px){
+  .hamburger{display:flex}
+  #main-nav{
+    display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;
+    background:#fff;border-bottom:2px solid var(--gray);box-shadow:var(--shadow2);
+    padding:16px 5% 24px;gap:4px;z-index:499
+  }
+  #main-nav.open{display:flex}
+  #main-nav a{padding:12px 16px;font-size:15px;border-radius:8px;border-bottom:1px solid var(--gray-lt)}
+  #main-nav a:last-child{border-bottom:none;margin-top:8px;text-align:center}
+  .nav-cta{display:block!important}
+  header{position:relative}
+}
+
+/* ══ FLOATING OPEN ACCOUNT BTN ══ */
+.float-cta{
+  position:fixed;bottom:100px;right:24px;z-index:800;
+  display:none;align-items:center;gap:8px;
+  background:var(--navy);color:#fff;border:none;
+  padding:13px 20px;border-radius:100px;
+  font-family:var(--fs);font-size:14px;font-weight:700;
+  cursor:pointer;box-shadow:0 8px 32px rgba(26,58,92,0.35);
+  transition:all .35s cubic-bezier(.22,.68,0,1.2);
+  animation:none
+}
+.float-cta.visible{display:flex}
+.float-cta:hover{background:var(--blue);transform:translateY(-3px) scale(1.04);box-shadow:0 12px 40px rgba(37,99,168,0.4)}
+.float-cta svg{transition:transform .3s}
+.float-cta:hover svg{transform:translateY(2px)}
+
+/* ══ BACK TO TOP ══ */
+.back-top{
+  position:fixed;bottom:36px;right:24px;z-index:800;
+  width:44px;height:44px;border-radius:50%;border:2px solid var(--gray);
+  background:#fff;color:var(--navy);cursor:pointer;
+  display:none;align-items:center;justify-content:center;
+  box-shadow:var(--shadow);transition:all .3s
+}
+.back-top.visible{display:flex}
+.back-top:hover{background:var(--navy);color:#fff;border-color:var(--navy);transform:translateY(-3px)}
+
+@media(max-width:960px){
+  .hero,.about-grid,.card-showcase,.app-grid,.auth-wrap,.contact-grid{grid-template-columns:1fr}
+  .hero-right,.auth-left{display:none}
+  .stats-strip{grid-template-columns:repeat(2,1fr)}
+  .svc-categories{grid-template-columns:1fr 1fr}
+  .products-grid{grid-template-columns:1fr}
+  .plan-grid{grid-template-columns:1fr 1fr}
+  .branch-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .float-cta{bottom:90px;right:16px}
+  .back-top{bottom:36px;right:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">We Chase<span>.</span></div>
+  <div class="ld-tagline">Your Trusted Bank Since 2007</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+  <div class="ld-pct" id="ldp">Loading…</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- TOP STRIP -->
+<div class="topstrip">
+  <span>📞 1-800-WE-CHASE &nbsp;|&nbsp; Mon–Fri 8AM–8PM &nbsp;|&nbsp; 🏦 Find a Branch</span>
+  <div>
+    <a href="#">Help Centre</a>
+    <a href="#">Fraud Alerts</a>
+    <a href="#">Accessibility</a>
+    <a href="#auth">Online Banking</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="hd">
+    <a href="#home" class="logo">
+      <div class="logo-icon">WC</div>
+      <div>
+        <div class="logo-name">We Chase Bank</div>
+        <div class="logo-sub">Private &amp; Corporate Banking</div>
+      </div>
+    </a>
+    <nav id="main-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>
+      <a href="#planning">Planning</a>
+      <a href="#branches">Branches</a>
+      <a href="#contact">Contact</a>
+      <a href="#auth" class="nav-cta">Open Account</a>
+    </nav>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <!-- Background video -->
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="https://videos.pexels.com/video-files/3194277/3194277-uhd_2560_1440_25fps.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-left">
+    <div class="hero-badge"><span class="badge-dot"></span> Trusted by 100,000+ Customers</div>
+    <h1>Banking You Can <span class="typewriter-word" id="tw-word">Trust,</span><span class="tw-cursor"></span><br>Service You Deserve.</h1>
+    <p class="hero-sub">From everyday accounts to retirement planning — We Chase Bank is with you at every stage of life. Secure, straightforward, and always on your side.</p>
+    <div class="hero-btns">
+      <button class="hbtn-p" onclick="s('auth')">Open a Free Account</button>
+      <button class="hbtn-watch" onclick="openVidModal()">
+        <span class="hbtn-play"><span class="hbtn-play-tri"></span></span>
+        Watch How It Works
+      </button>
+      <button class="hbtn-s" onclick="s('services')" style="animation:fadeUp .9s .7s forwards;opacity:0">Explore Services ↓</button>
+    </div>
+    <!-- Rotating testimonial -->
+    <div class="hero-testi" id="hero-testi">
+      <div class="hero-testi-quote" id="ht-quote"></div>
+      <div class="hero-testi-author">
+        <img class="hero-testi-avatar" id="ht-avatar" src="" alt="">
+        <div>
+          <div class="hero-testi-name" id="ht-name"></div>
+          <div class="hero-testi-role" id="ht-role"></div>
+        </div>
+        <div class="hero-testi-dots" id="ht-dots"></div>
+      </div>
+    </div>
+    <div class="hero-trust">
+      <div class="ht-item"><div class="ht-n">18+</div><div class="ht-l">Years Trusted</div></div>
+      <div class="ht-item"><div class="ht-n">14</div><div class="ht-l">Countries</div></div>
+      <div class="ht-item"><div class="ht-n">150+</div><div class="ht-l">Branches</div></div>
+      <div class="ht-item"><div class="ht-n">100K+</div><div class="ht-l">Customers</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="card-stack">
+      <div class="card-badge">Contactless</div>
+      <div class="bank-card bc-debit">
+        <div class="bc-chip"></div>
+        <div class="bc-network">VISA</div>
+        <div class="bc-num">•••• &nbsp;•••• &nbsp;•••• &nbsp;4829</div>
+        <div class="bc-bottom">
+          <div><div class="bc-name">Robert H. Ellis</div><div class="bc-exp">Valid: 08/29</div></div>
+        </div>
+        <div class="bc-type">Debit Card</div>
+      </div>
+      <div class="bank-card bc-credit" style="margin-top:20px">
+        <div class="bc-chip"></div>
+        <div class="bc-network">MC</div>
+        <div class="bc-num">•••• &nbsp;•••• &nbsp;•••• &nbsp;7213</div>
+        <div class="bc-bottom">
+          <div><div class="bc-name">Robert H. Ellis</div><div class="bc-exp">Valid: 03/28</div></div>
+        </div>
+        <div class="bc-type">Gold Credit Card</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mq-t">
+    <div class="mq-i">🏦 FDIC Insured <b>Member</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">💳 Zero Foreign Fees <b>Always</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">🔐 256-bit Encryption <b>Bank-Grade</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">🌍 Available in 14 Countries <b>Worldwide</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">📱 Mobile Banking <b>Award Winning</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">👴 Pensioner Accounts <b>Available</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">🎓 Student Loans <b>Easy Apply</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">🏠 Home Loans <b>Best Rates</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">🏦 FDIC Insured <b>Member</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">💳 Zero Foreign Fees <b>Always</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">🔐 256-bit Encryption <b>Bank-Grade</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">🌍 Available in 14 Countries <b>Worldwide</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">📱 Mobile Banking <b>Award Winning</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">👴 Pensioner Accounts <b>Available</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">🎓 Student Loans <b>Easy Apply</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+    <div class="mq-i">🏠 Home Loans <b>Best Rates</b></div><span style="color:rgba(255,255,255,.2)">◆</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="about-grid">
+    <div class="rl">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?w=900&q=80" alt="Bank interior">
+        <div class="about-img-overlay">
+          <div class="aio-stat">
+            <div class="aio-s"><div class="n">18+</div><div class="l">Years</div></div>
+            <div class="aio-s"><div class="n">100K+</div><div class="l">Customers</div></div>
+            <div class="aio-s"><div class="n">150+</div><div class="l">Branches</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rr">
+      <div class="kicker k-blue">Our Story</div>
+      <h2 class="sec-title">Eighteen Years of<br>Serving Real People</h2>
+      <p style="font-family:var(--fs);font-size:16px;color:var(--text3);line-height:1.85;margin-bottom:20px">Founded in 2007, We Chase Bank was built on one simple promise: that every customer — young or old, student or retiree — deserves honest, helpful banking without hidden fees or confusing small print.</p>
+      <div class="bq">
+        <p>"We built this bank for people, not profit. Every account, every loan, every pension — tailored to the human being holding it."</p>
+        <cite>— James R. Whitmore, Founder &amp; Chairman</cite>
+      </div>
+      <p style="font-family:var(--fs);font-size:13px;color:var(--text3)">Regulated by the Federal Reserve. Member FDIC. Equal Housing Lender. Member SIPC.</p>
+    </div>
+  </div>
+
+  <div class="stats-strip rv stagger" style="margin-top:72px">
+    <div class="stat-box c1"><div class="stat-n"><span class="cnum" data-t="18">0</span>+</div><div class="stat-l">Years in Business</div></div>
+    <div class="stat-box c2"><div class="stat-n"><span class="cnum" data-t="14">0</span></div><div class="stat-l">Countries Served</div></div>
+    <div class="stat-box c3"><div class="stat-n"><span class="cnum" data-t="150">0</span>+</div><div class="stat-l">Branch Offices</div></div>
+    <div class="stat-box c4"><div class="stat-n">100K+</div><div class="stat-l">Happy Customers</div></div>
+  </div>
+</section>
+
+<!-- ALL SERVICES -->
+<section class="sec sec-bg" id="services">
+  <div class="rv txt-center">
+    <div class="kicker k-teal" style="justify-content:center">Everything We Offer</div>
+    <h2 class="sec-title">Complete Banking Services<br>For Every Stage of Life</h2>
+    <p class="sec-sub">Whether you're a student, a young family, a business owner, or planning for retirement — we have the right product for you.</p>
+  </div>
+
+  <div class="svc-categories rv stagger">
+    <!-- Everyday Banking -->
+    <div class="svc-cat cat-everyday">
+      <div class="svc-cat-header">
+        <div class="cat-count">6 Services</div>
+        <span class="cat-icon">🏦</span>
+        <div class="cat-title">Everyday Banking</div>
+        <div class="cat-sub">Day-to-day accounts &amp; payments</div>
+      </div>
+      <div class="svc-cat-body">
+        <div class="svc-item">Current Account</div>
+        <div class="svc-item">Joint Account</div>
+        <div class="svc-item">Basic Bank Account</div>
+        <div class="svc-item">Instant Wire Transfers</div>
+        <div class="svc-item">Direct Debit &amp; Standing Orders</div>
+        <div class="svc-item">International Payments</div>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="svc-cat cat-cards">
+      <div class="svc-cat-header">
+        <span class="cat-icon">💳</span>
+        <div class="cat-title">Cards</div>
+        <div class="cat-sub">Debit, credit &amp; prepaid cards</div>
+      </div>
+      <div class="svc-cat-body">
+        <div class="svc-item">Classic Debit Card</div>
+        <div class="svc-item">Standard Credit Card</div>
+        <div class="svc-item">Gold Credit Card</div>
+        <div class="svc-item">Platinum Rewards Card</div>
+        <div class="svc-item">Prepaid Travel Card</div>
+        <div class="svc-item">Virtual Card (Contactless)</div>
+      </div>
+    </div>
+
+    <!-- Savings -->
+    <div class="svc-cat cat-savings">
+      <div class="svc-cat-header">
+        <span class="cat-icon">🐷</span>
+        <div class="cat-title">Savings &amp; ISAs</div>
+        <div class="cat-sub">Grow your money safely</div>
+      </div>
+      <div class="svc-cat-body">
+        <div class="svc-item">Easy Access Savings</div>
+        <div class="svc-item">Fixed-Rate Savings</div>
+        <div class="svc-item">Cash ISA</div>
+        <div class="svc-item">Junior ISA (Children)</div>
+        <div class="svc-item">Regular Saver Account</div>
+        <div class="svc-item">Notice Account</div>
+      </div>
+    </div>
+
+    <!-- Borrowing -->
+    <div class="svc-cat cat-borrow">
+      <div class="svc-cat-header">
+        <span class="cat-icon">🏠</span>
+        <div class="cat-title">Loans &amp; Mortgages</div>
+        <div class="cat-sub">Borrow with confidence</div>
+      </div>
+      <div class="svc-cat-body">
+        <div class="svc-item">Personal Loan</div>
+        <div class="svc-item">Home Mortgage</div>
+        <div class="svc-item">Remortgage</div>
+        <div class="svc-item">Car / Auto Loan</div>
+        <div class="svc-item">Overdraft Facility</div>
+        <div class="svc-item">Debt Consolidation Loan</div>
+      </div>
+    </div>
+
+    <!-- Investing -->
+    <div class="svc-cat cat-invest">
+      <div class="svc-cat-header">
+        <span class="cat-icon">📈</span>
+        <div class="cat-title">Investments &amp; Wealth</div>
+        <div class="cat-sub">Make your money work harder</div>
+      </div>
+      <div class="svc-cat-body">
+        <div class="svc-item">Stocks &amp; Shares ISA</div>
+        <div class="svc-item">Managed Portfolio</div>
+        <div class="svc-item">ETFs &amp; Funds</div>
+        <div class="svc-item">Government Bonds</div>
+        <div class="svc-item">Structured Products</div>
+        <div class="svc-item">Private Wealth Advisory</div>
+      </div>
+    </div>
+
+    <!-- Future Planning -->
+    <div class="svc-cat cat-future">
+      <div class="svc-cat-header">
+        <span class="cat-icon">👴</span>
+        <div class="cat-title">Pensions &amp; Retirement</div>
+        <div class="cat-sub">Plan for a comfortable future</div>
+      </div>
+      <div class="svc-cat-body">
+        <div class="svc-item">Personal Pension (SIPP)</div>
+        <div class="svc-item">Workplace Pension</div>
+        <div class="svc-item">Retirement Income Plan</div>
+        <div class="svc-item">Senior Current Account</div>
+        <div class="svc-item">Pension Drawdown</div>
+        <div class="svc-item">Annuity Services</div>
+      </div>
+    </div>
+
+    <!-- Student -->
+    <div class="svc-cat cat-student">
+      <div class="svc-cat-header">
+        <span class="cat-icon">🎓</span>
+        <div class="cat-title">Student Banking</div>
+        <div class="cat-sub">Banking built for students</div>
+      </div>
+      <div class="svc-cat-body">
+        <div class="svc-item">Student Current Account</div>
+        <div class="svc-item">Student Loan</div>
+        <div class="svc-item">0% Student Overdraft</div>
+        <div class="svc-item">Graduate Account</div>
+        <div class="svc-item">Student Credit Card</div>
+        <div class="svc-item">Tuition Fee Loan</div>
+      </div>
+    </div>
+
+    <!-- Business -->
+    <div class="svc-cat cat-business">
+      <div class="svc-cat-header">
+        <span class="cat-icon">🏢</span>
+        <div class="cat-title">Business Banking</div>
+        <div class="cat-sub">For SMEs &amp; enterprises</div>
+      </div>
+      <div class="svc-cat-body">
+        <div class="svc-item">Business Current Account</div>
+        <div class="svc-item">Business Loan</div>
+        <div class="svc-item">Payroll Services</div>
+        <div class="svc-item">Merchant Services</div>
+        <div class="svc-item">Corporate Credit Cards</div>
+        <div class="svc-item">Invoice Finance</div>
+      </div>
+    </div>
+
+    <!-- Insurance -->
+    <div class="svc-cat cat-insurance">
+      <div class="svc-cat-header">
+        <span class="cat-icon">🛡️</span>
+        <div class="cat-title">Insurance &amp; Protection</div>
+        <div class="cat-sub">Protect what matters most</div>
+      </div>
+      <div class="svc-cat-body">
+        <div class="svc-item">Home Insurance</div>
+        <div class="svc-item">Life Insurance</div>
+        <div class="svc-item">Travel Insurance</div>
+        <div class="svc-item">Income Protection</div>
+        <div class="svc-item">Critical Illness Cover</div>
+        <div class="svc-item">Pet Insurance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="sec" id="products">
+  <div class="rv txt-center">
+    <div class="kicker k-amber" style="justify-content:center">Featured Products</div>
+    <h2 class="sec-title">Our Most Popular Accounts</h2>
+    <p class="sec-sub">Simple, transparent pricing. No surprise charges. Ever.</p>
+  </div>
+  <div class="products-grid rv stagger">
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80" alt="Everyday account"><div class="prod-badge pb-blue">Most Popular</div></div>
+      <div class="prod-body">
+        <div class="prod-title">Everyday Current Account</div>
+        <div class="prod-desc">Your main account for daily spending, direct debits, and transfers. Free to open, free to use.</div>
+        <div class="prod-rate"><div class="rate-val">£0</div><div class="rate-label">Monthly fee<br>No minimum balance</div></div>
+        <button class="prod-btn">Apply Now</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80" alt="Savings"><div class="prod-badge pb-green">High Interest</div></div>
+      <div class="prod-body">
+        <div class="prod-title">Fixed-Rate Savings Account</div>
+        <div class="prod-desc">Lock in a great rate for 1, 2 or 3 years. FSCS protected up to £85,000.</div>
+        <div class="prod-rate"><div class="rate-val">5.2%</div><div class="rate-label">AER (Annual Equivalent Rate)<br>1-year fixed term</div></div>
+        <button class="prod-btn">Open Account</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=700&q=80" alt="Mortgage"><div class="prod-badge pb-purple">Best Rates</div></div>
+      <div class="prod-body">
+        <div class="prod-title">Home Mortgage</div>
+        <div class="prod-desc">Fixed and variable rate mortgages for first-time buyers, movers, and remortgagers.</div>
+        <div class="prod-rate"><div class="rate-val">4.49%</div><div class="rate-label">Initial rate (2yr fixed)<br>Subject to eligibility</div></div>
+        <button class="prod-btn">Get a Quote</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?w=700&q=80" alt="Pension"><div class="prod-badge pb-teal">Plan Ahead</div></div>
+      <div class="prod-body">
+        <div class="prod-title">Personal Pension (SIPP)</div>
+        <div class="prod-desc">Start saving for retirement at any age. Tax-efficient, flexible, and managed by our advisors.</div>
+        <div class="prod-rate"><div class="rate-val">20%</div><div class="rate-label">Tax relief from government<br>on every contribution</div></div>
+        <button class="prod-btn">Start Pension</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEBIT & CREDIT CARD SHOWCASE -->
+<section class="sec sec-sky">
+  <div class="rv txt-center" style="margin-bottom:0">
+    <div class="kicker k-blue" style="justify-content:center">Our Cards</div>
+    <h2 class="sec-title">Debit &amp; Credit Cards<br>for Every Lifestyle</h2>
+  </div>
+  <div class="card-showcase" style="margin-top:60px">
+    <div class="rl">
+      <div class="card-tabs">
+        <button class="ctab on" onclick="switchCard('debit',this)">Debit Card</button>
+        <button class="ctab" onclick="switchCard('credit',this)">Credit Card</button>
+        <button class="ctab" onclick="switchCard('gold',this)">Gold Card</button>
+      </div>
+      <div id="card-info-debit">
+        <div class="card-info">
+          <div class="ci-row"><div class="ci-icon ci-b">💳</div><div class="ci-text"><strong>No Monthly Fee</strong><span>Free to use worldwide</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-g">✅</div><div class="ci-text"><strong>Contactless Payments</strong><span>Apple Pay &amp; Google Pay ready</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-a">🌍</div><div class="ci-text"><strong>Zero Foreign Transaction Fees</strong><span>Use abroad at no extra cost</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-p">🔔</div><div class="ci-text"><strong>Instant Spending Alerts</strong><span>Know every transaction immediately</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-t">🔒</div><div class="ci-text"><strong>Freeze &amp; Unfreeze</strong><span>Lock your card instantly from the app</span></div></div>
+        </div>
+        <button class="fsub" onclick="applyForCard('debit')">Apply for Debit Card →</button>
+      </div>
+      <div id="card-info-credit" style="display:none">
+        <div class="card-info">
+          <div class="ci-row"><div class="ci-icon ci-b">💰</div><div class="ci-text"><strong>0% Interest for 15 Months</strong><span>On purchases and balance transfers</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-g">🏆</div><div class="ci-text"><strong>Cashback Rewards</strong><span>Earn 0.5% on every purchase</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-a">📊</div><div class="ci-text"><strong>Credit Limit up to £15,000</strong><span>Subject to credit check</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-p">🛡️</div><div class="ci-text"><strong>Purchase Protection</strong><span>Section 75 cover on purchases</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-t">📱</div><div class="ci-text"><strong>Manage in App</strong><span>Pay, check balance, set limits</span></div></div>
+        </div>
+        <button class="fsub" onclick="applyForCard('credit')">Apply for Credit Card →</button>
+      </div>
+      <div id="card-info-gold" style="display:none">
+        <div class="card-info">
+          <div class="ci-row"><div class="ci-icon ci-b">⭐</div><div class="ci-text"><strong>3x Reward Points</strong><span>On travel, dining &amp; shopping</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-g">✈️</div><div class="ci-text"><strong>Airport Lounge Access</strong><span>Complimentary at 1,200+ lounges</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-a">🏨</div><div class="ci-text"><strong>Hotel Discounts</strong><span>Up to 20% off partner hotels</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-p">🌍</div><div class="ci-text"><strong>Travel Insurance Included</strong><span>Worldwide coverage, no extra cost</span></div></div>
+          <div class="ci-row"><div class="ci-icon ci-t">💳</div><div class="ci-text"><strong>Credit Limit up to £30,000</strong><span>For eligible premium customers</span></div></div>
+        </div>
+        <button class="fsub" onclick="applyForCard('gold')">Apply for Gold Card →</button>
+      </div>
+    </div>
+    <div class="rr">
+      <div class="card-visual">
+        <div id="sc-debit" class="showcase-card sc-debit">
+          <div class="card-glow"></div>
+          <div class="chip"></div>
+          <div class="net">VISA</div>
+          <div class="num">•••• &nbsp;•••• &nbsp;•••• &nbsp;4829</div>
+          <div class="cname">Robert H. Ellis</div>
+          <div class="cexp">08 / 29</div>
+          <div class="clabel">Debit Card</div>
+        </div>
+        <div id="sc-credit" class="showcase-card sc-credit" style="display:none">
+          <div class="card-glow"></div>
+          <div class="chip"></div>
+          <div class="net">MC</div>
+          <div class="num">•••• &nbsp;•••• &nbsp;•••• &nbsp;7213</div>
+          <div class="cname">Robert H. Ellis</div>
+          <div class="cexp">03 / 28</div>
+          <div class="clabel">Credit Card</div>
+        </div>
+        <div id="sc-gold" class="showcase-card sc-gold" style="display:none">
+          <div class="card-glow"></div>
+          <div class="chip"></div>
+          <div class="net">VISA</div>
+          <div class="num">•••• &nbsp;•••• &nbsp;•••• &nbsp;0012</div>
+          <div class="cname">Robert H. Ellis</div>
+          <div class="cexp">11 / 27</div>
+          <div class="clabel">Gold Premium</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFE PLANNING -->
+<section class="sec" id="planning">
+  <div class="rv txt-center">
+    <div class="kicker k-green" style="justify-content:center">Life Planning</div>
+    <h2 class="sec-title">Banking for Every Stage of Life</h2>
+    <p class="sec-sub">From your first student account to retirement planning — we're with you every step of the way.</p>
+  </div>
+  <div class="plan-grid rv stagger">
+    <div class="plan-card pc-retirement">
+      <span class="plan-icon">👴</span>
+      <div class="plan-title">Retirement &amp; Pensions</div>
+      <div class="plan-desc">Our specialist pension advisors help you build a comfortable retirement. Personal pensions, workplace schemes, and drawdown options all available. Start at any age.</div>
+      <a href="#" class="plan-link" onclick="toast2('Connecting you with a pension advisor…');return false">Learn about pensions <span>→</span></a>
+    </div>
+    <div class="plan-card pc-student">
+      <span class="plan-icon">🎓</span>
+      <div class="plan-title">Student Banking</div>
+      <div class="plan-desc">0% overdraft, low-rate student loans, and a free current account designed around student life. Quick applications with university ID. No credit history required.</div>
+      <a href="#" class="plan-link" onclick="toast2('Opening student account application…');return false">Explore student banking <span>→</span></a>
+    </div>
+    <div class="plan-card pc-children">
+      <span class="plan-icon">👶</span>
+      <div class="plan-title">Children &amp; Junior Accounts</div>
+      <div class="plan-desc">Junior ISAs, children's savings, and family accounts to give your children the best financial start. FSCS protected. Managed by parent until age 18.</div>
+      <a href="#" class="plan-link" onclick="toast2('Opening junior account information…');return false">Open a junior account <span>→</span></a>
+    </div>
+    <div class="plan-card pc-life">
+      <span class="plan-icon">💚</span>
+      <div class="plan-title">Life Insurance</div>
+      <div class="plan-desc">Level term, decreasing term, and whole-of-life policies. Protect your family's financial future with affordable cover from as little as £10/month.</div>
+      <a href="#" class="plan-link" onclick="toast2('Getting your life insurance quote…');return false">Get a quote <span>→</span></a>
+    </div>
+    <div class="plan-card pc-senior">
+      <span class="plan-icon">🌟</span>
+      <div class="plan-title">Senior &amp; Accessibility Banking</div>
+      <div class="plan-desc">Large-print statements, dedicated phone support with no automated menus, in-branch assistance, and accounts designed for older customers. We make banking simple.</div>
+      <a href="#" class="plan-link" onclick="toast2('Opening senior banking guide…');return false">Senior banking services <span>→</span></a>
+    </div>
+    <div class="plan-card pc-will">
+      <span class="plan-icon">📜</span>
+      <div class="plan-title">Wills, Trusts &amp; Estate Planning</div>
+      <div class="plan-desc">Our partner solicitors can help you write a will, set up trusts, and plan your estate. Peace of mind for you and security for your family.</div>
+      <a href="#" class="plan-link" onclick="toast2('Connecting with estate planning team…');return false">Estate planning services <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- APP SECTION -->
+<section class="sec sec-bg">
+  <div class="app-grid">
+    <div class="rl">
+      <div class="kicker k-blue">Mobile Banking</div>
+      <h2 class="sec-title">The We Chase App<br><span style="color:var(--blue);font-style:italic">Simple. Secure. Yours.</span></h2>
+      <p style="font-family:var(--fs);font-size:16px;color:var(--text3);line-height:1.85;margin-bottom:8px">Our award-winning mobile app is designed to be easy for everyone — large text options, simple menus, and 24/7 access to your accounts. Rated 4.8 ⭐ from 47,000 reviews.</p>
+      <div class="app-feats">
+        <div class="af-row"><div class="af-icon" style="background:var(--sky)">🔔</div><div><div class="af-title">Instant Transaction Alerts</div><div class="af-desc">Know the moment money leaves or enters your account. No surprises, ever.</div></div></div>
+        <div class="af-row"><div class="af-icon" style="background:var(--green-lt)">👆</div><div><div class="af-title">Fingerprint &amp; Face Login</div><div class="af-desc">Sign in securely in seconds. No need to remember a password.</div></div></div>
+        <div class="af-row"><div class="af-icon" style="background:var(--amber-lt)">🎯</div><div><div class="af-title">Savings Goals</div><div class="af-desc">Set a target, track your progress, and celebrate when you reach it.</div></div></div>
+        <div class="af-row"><div class="af-icon" style="background:var(--purple-lt)">📷</div><div><div class="af-title">Cheque Deposit by Photo</div><div class="af-desc">Photograph your cheque to deposit it. No branch visit needed.</div></div></div>
+        <div class="af-row"><div class="af-icon" style="background:var(--teal-lt)">🔤</div><div><div class="af-title">Large Text &amp; Accessibility</div><div class="af-desc">Adjust font size, contrast, and voice-over options anytime in settings.</div></div></div>
+      </div>
+    </div>
+    <div class="rr">
+      <div class="phone-wrap">
+        <div class="phone-glow"></div>
+        <div class="phone">
+          <div class="ph-notch"></div>
+          <div class="ph-lbl">Account Balance</div>
+          <div class="ph-bal" id="app-bal">£84,231.50</div>
+          <div class="ph-div"></div>
+          <div class="ph-row"><span class="ph-rn">Salary — Employer</span><span class="ph-ra ph-cr">+£3,200</span></div>
+          <div class="ph-row"><span class="ph-rn">Mortgage</span><span class="ph-ra ph-dr">–£1,420</span></div>
+          <div class="ph-row"><span class="ph-rn">Pension Contribution</span><span class="ph-ra ph-dr">–£300</span></div>
+          <div class="ph-row"><span class="ph-rn">Interest Earned</span><span class="ph-ra ph-cr">+£214</span></div>
+          <div class="ph-div"></div>
+          <div class="ph-btns">
+            <div class="ph-btn">Pay</div>
+            <div class="ph-btn">Transfer</div>
+            <div class="ph-btn">Cards</div>
+            <div class="ph-btn">More</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section class="sec" id="branches">
+  <div class="rv">
+    <div class="branch-section-intro">
+      <div>
+        <div class="kicker k-amber">Our Branches</div>
+        <h2 class="sec-title">We're Always Near You</h2>
+        <p style="font-family:var(--fs);font-size:15px;color:var(--text3);max-width:480px;line-height:1.8">150+ branches across 14 countries. Walk in anytime — no appointment needed for most everyday banking needs.</p>
+      </div>
+      <div class="branch-stats-row">
+        <div class="bsr-item"><div class="bsr-n">150+</div><div class="bsr-l">Branches</div></div>
+        <div class="bsr-item"><div class="bsr-n">14</div><div class="bsr-l">Countries</div></div>
+        <div class="bsr-item"><div class="bsr-n">6</div><div class="bsr-l">Continents</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="branch-grid rv stagger">
+    <div class="branch-card">
+      <img src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=700&q=80" alt="New York">
+      <div class="branch-pin">📍</div>
+      <div class="branch-info">
+        <div class="bi-city">New York</div>
+        <div class="bi-count">28 Branches</div>
+        <div class="bi-open">Open Mon–Fri 8AM–6PM · Sat 9AM–2PM</div>
+      </div>
+      <div class="branch-tag">Headquarters</div>
+    </div>
+    <div class="branch-card">
+      <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=700&q=80" alt="London">
+      <div class="branch-pin">📍</div>
+      <div class="branch-info">
+        <div class="bi-city">London</div>
+        <div class="bi-count">19 Branches</div>
+        <div class="bi-open">Open Mon–Fri 8AM–7PM · Sat 9AM–4PM</div>
+      </div>
+      <div class="branch-tag">Europe Hub</div>
+    </div>
+    <div class="branch-card">
+      <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=700&q=80" alt="Singapore">
+      <div class="branch-pin">📍</div>
+      <div class="branch-info">
+        <div class="bi-city">Singapore</div>
+        <div class="bi-count">14 Branches</div>
+        <div class="bi-open">Open Mon–Fri 9AM–6PM · Sat 9AM–1PM</div>
+      </div>
+      <div class="branch-tag">Asia Pacific</div>
+    </div>
+    <div class="branch-card">
+      <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=700&q=80" alt="Mumbai">
+      <div class="branch-pin">📍</div>
+      <div class="branch-info">
+        <div class="bi-city">Mumbai</div>
+        <div class="bi-count">22 Branches</div>
+        <div class="bi-open">Open Mon–Fri 9AM–5PM · Sat 10AM–2PM</div>
+      </div>
+      <div class="branch-tag">South Asia</div>
+    </div>
+  </div>
+
+  <!-- World presence globe strip -->
+  <div class="branch-globe rv">
+    <div class="bg-text">
+      <div class="bg-title">🌍 Serving Customers in 14 Countries</div>
+      <p>From North America to South Asia, our global network means you're never far from a We Chase Bank branch, ATM, or dedicated phone advisor.</p>
+    </div>
+    <div class="bg-countries">
+      <div class="bg-country">🇺🇸 USA</div>
+      <div class="bg-country">🇬🇧 UK</div>
+      <div class="bg-country">🇸🇬 Singapore</div>
+      <div class="bg-country">🇮🇳 India</div>
+      <div class="bg-country">🇦🇪 UAE</div>
+      <div class="bg-country">🇦🇺 Australia</div>
+      <div class="bg-country">🇩🇪 Germany</div>
+      <div class="bg-country">🇫🇷 France</div>
+      <div class="bg-country">🇨🇦 Canada</div>
+      <div class="bg-country">🇿🇦 South Africa</div>
+      <div class="bg-country">🇧🇷 Brazil</div>
+      <div class="bg-country">🇯🇵 Japan</div>
+      <div class="bg-country">🇨🇭 Switzerland</div>
+      <div class="bg-country">🇳🇬 Nigeria</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec sec-bg">
+  <div class="rv txt-center">
+    <div class="kicker k-teal" style="justify-content:center">Customer Stories</div>
+    <h2 class="sec-title">Real People, Real Results</h2>
+  </div>
+  <div class="testi-grid rv stagger">
+    <div class="testi-card">
+      <div class="testi-marks">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">The pension team at We Chase helped me understand exactly what I'd have at retirement. I'm 67 now and I can honestly say they gave me peace of mind I didn't think was possible. Brilliant service.</div>
+      <div class="testi-divider"></div>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=100&q=80" alt="Margaret"></div>
+        <div><div class="testi-name">Margaret T.</div><div class="testi-role">Retired Teacher, Birmingham</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-marks">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">I got my student loan and 0% overdraft sorted in one afternoon. The staff were so patient and explained everything clearly. As a first-time bank customer it was so much less scary than I expected!</div>
+      <div class="testi-divider"></div>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&q=80" alt="Priya"></div>
+        <div><div class="testi-name">Priya S.</div><div class="testi-role">University Student, Manchester</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-marks">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">We Chase sorted our mortgage, savings ISA, and business account all at once. The relationship manager knew us by name. That personal touch is incredibly rare in banking today — we won't go anywhere else.</div>
+      <div class="testi-divider"></div>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="David"></div>
+        <div><div class="testi-name">David &amp; Claire M.</div><div class="testi-role">Small Business Owners, Edinburgh</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTH -->
+<section class="sec sec-navy" id="auth">
+  <div class="rv txt-center" style="margin-bottom:0">
+    <div class="kicker k-white" style="justify-content:center">Join Us Today</div>
+    <h2 class="sec-title" style="color:#fff">Open Your Account <span style="color:#f5c842;font-style:italic">in Minutes</span></h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,.65);margin:0 auto">No branch visit needed. No paperwork. Just 5 minutes online.</p>
+  </div>
+  <div class="auth-wrap">
+    <div class="auth-left">
+      <!-- Animated bank worker shadow figure -->
+      <div class="bank-worker-scene">
+        <svg viewBox="0 0 180 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+          <defs>
+            <linearGradient id="workerGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#4ec9e0" stop-opacity="0.10"/>
+            </linearGradient>
+            <filter id="blur2"><feGaussianBlur stdDeviation="2"/></filter>
+          </defs>
+
+          <!-- desk surface shadow -->
+          <ellipse cx="90" cy="460" rx="80" ry="8" fill="#ffffff" opacity="0.07"/>
+
+          <!-- desk -->
+          <rect x="5" y="400" width="170" height="12" rx="3" fill="#ffffff" opacity="0.12"/>
+          <rect x="15" y="412" width="8" height="80" rx="2" fill="#ffffff" opacity="0.08"/>
+          <rect x="157" y="412" width="8" height="80" rx="2" fill="#ffffff" opacity="0.08"/>
+
+          <!-- monitor stand -->
+          <rect x="82" y="360" width="16" height="42" rx="2" fill="#ffffff" opacity="0.12"/>
+          <rect x="65" y="398" width="50" height="6" rx="3" fill="#ffffff" opacity="0.1"/>
+
+          <!-- monitor body -->
+          <rect x="30" y="280" width="120" height="82" rx="8" fill="#ffffff" opacity="0.12"/>
+          <!-- screen glow -->
+          <rect x="36" y="286" width="108" height="70" rx="5" fill="#4ec9e0" opacity="0.0">
+            <animate attributeName="opacity" values="0.10;0.22;0.10" dur="3s" repeatCount="indefinite"/>
+          </rect>
+          <!-- screen data lines -->
+          <rect x="44" y="298" width="60" height="4" rx="2" fill="#4ec9e0" opacity="0.55">
+            <animate attributeName="width" values="20;60;45;60" dur="4s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="44" y="308" width="80" height="3" rx="2" fill="#f5c842" opacity="0.5">
+            <animate attributeName="width" values="40;80;55;80" dur="3.5s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="44" y="317" width="50" height="3" rx="2" fill="#4ec9e0" opacity="0.4">
+            <animate attributeName="width" values="50;30;50" dur="2.8s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="44" y="326" width="70" height="3" rx="2" fill="#f5c842" opacity="0.35">
+            <animate attributeName="width" values="30;70;50;70" dur="5s" repeatCount="indefinite"/>
+          </rect>
+          <!-- cursor blink -->
+          <rect x="44" y="340" width="6" height="10" rx="1" fill="#fff" opacity="0.7">
+            <animate attributeName="opacity" values="0.7;0;0.7" dur="1.1s" repeatCount="indefinite"/>
+          </rect>
+
+          <!-- keyboard -->
+          <rect x="40" y="404" width="100" height="14" rx="4" fill="#ffffff" opacity="0.1"/>
+          <rect x="44" y="407" width="8" height="4" rx="1" fill="#4ec9e0" opacity="0.22"/>
+          <rect x="55" y="407" width="8" height="4" rx="1" fill="#4ec9e0" opacity="0.22"/>
+          <rect x="66" y="407" width="8" height="4" rx="1" fill="#4ec9e0" opacity="0.22"/>
+          <rect x="77" y="407" width="8" height="4" rx="1" fill="#4ec9e0" opacity="0.22"/>
+          <rect x="88" y="407" width="8" height="4" rx="1" fill="#4ec9e0" opacity="0.22"/>
+          <rect x="99" y="407" width="8" height="4" rx="1" fill="#4ec9e0" opacity="0.22"/>
+          <rect x="110" y="407" width="8" height="4" rx="1" fill="#4ec9e0" opacity="0.22"/>
+          <rect x="52" y="413" width="76" height="3" rx="1" fill="#ffffff" opacity="0.1"/>
+
+          <!-- chair (behind person) -->
+          <g style="transform-origin:90px 430px;animation:chairRock 6s ease-in-out infinite">
+            <rect x="60" y="420" width="60" height="8" rx="4" fill="#ffffff" opacity="0.14"/>
+            <rect x="85" y="428" width="10" height="30" rx="2" fill="#ffffff" opacity="0.1"/>
+            <rect x="58" y="455" width="64" height="6" rx="3" fill="#ffffff" opacity="0.1"/>
+            <!-- chair back -->
+            <rect x="62" y="350" width="56" height="72" rx="6" fill="#ffffff" opacity="0.07"/>
+          </g>
+
+          <!-- person torso -->
+          <g style="transform-origin:90px 390px;animation:chairRock 6s ease-in-out infinite">
+            <!-- body -->
+            <rect x="65" y="370" width="50" height="58" rx="8" fill="#ffffff" opacity="0.16"/>
+            <!-- shirt detail -->
+            <rect x="87" y="374" width="6" height="30" rx="3" fill="#4ec9e0" opacity="0.15"/>
+            <!-- tie -->
+            <rect x="88" y="374" width="4" height="22" rx="2" fill="#f5c842" opacity="0.3"/>
+
+            <!-- left arm (typing) -->
+            <g style="transform-origin:70px 378px;animation:armL 1.8s ease-in-out infinite">
+              <rect x="42" y="378" width="28" height="10" rx="5" fill="#ffffff" opacity="0.14"/>
+              <ellipse cx="44" cy="410" rx="9" ry="7" fill="#ffffff" opacity="0.12" style="transform-origin:44px 395px;animation:typing 1.2s ease-in-out infinite"/>
+            </g>
+            <!-- right arm (typing) -->
+            <g style="transform-origin:110px 378px;animation:armR 1.8s .4s ease-in-out infinite">
+              <rect x="110" y="378" width="28" height="10" rx="5" fill="#ffffff" opacity="0.14"/>
+              <ellipse cx="136" cy="410" rx="9" ry="7" fill="#ffffff" opacity="0.12" style="transform-origin:136px 395px;animation:typing 1.2s .3s ease-in-out infinite"/>
+            </g>
+          </g>
+
+          <!-- head (bobbing) -->
+          <g style="transform-origin:90px 345px;animation:headBob 4s ease-in-out infinite">
+            <!-- neck -->
+            <rect x="84" y="358" width="12" height="14" rx="4" fill="#ffffff" opacity="0.14"/>
+            <!-- head -->
+            <ellipse cx="90" cy="340" rx="22" ry="25" fill="#ffffff" opacity="0.16"/>
+            <!-- hair -->
+            <ellipse cx="90" cy="320" rx="22" ry="10" fill="#ffffff" opacity="0.1"/>
+            <!-- glasses -->
+            <rect x="74" y="338" width="14" height="8" rx="3" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.4"/>
+            <rect x="92" y="338" width="14" height="8" rx="3" fill="none" stroke="#f5c842" stroke-width="2" opacity="0.4"/>
+            <line x1="88" y1="342" x2="92" y2="342" stroke="#f5c842" stroke-width="1.5" opacity="0.4"/>
+          </g>
+
+          <!-- coffee mug -->
+          <g style="transform-origin:150px 400px">
+            <rect x="145" y="388" width="20" height="16" rx="3" fill="#ffffff" opacity="0.12"/>
+            <path d="M165 393 Q174 393 174 399 Q174 405 165 405" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.1"/>
+            <!-- steam -->
+            <path d="M150 385 Q152 378 150 372" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.4" stroke-linecap="round">
+              <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="d" values="M150 385 Q152 378 150 372;M150 385 Q154 376 150 370;M150 385 Q152 378 150 372" dur="2.5s" repeatCount="indefinite"/>
+            </path>
+            <path d="M156 383 Q158 376 156 370" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3" stroke-linecap="round">
+              <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" begin="0.8s" repeatCount="indefinite"/>
+            </path>
+          </g>
+
+          <!-- document pile -->
+          <rect x="10" y="393" width="36" height="6" rx="2" fill="#ffffff" opacity="0.1" transform="rotate(-3 28 396)"/>
+          <rect x="12" y="388" width="34" height="6" rx="2" fill="#ffffff" opacity="0.08" transform="rotate(-6 29 391)"/>
+          <rect x="10" y="383" width="36" height="6" rx="2" fill="#4ec9e0" opacity="0.12" transform="rotate(-2 28 386)"/>
+        </svg>
+      </div>
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80" alt="Banking">
+      <div class="auth-over">
+        <h3>"We opened my mother's senior account over the phone in one morning. The staff were patient, kind, and didn't use a single confusing term."</h3>
+        <p>Join over 100,000 customers who trust We Chase Bank with their money, their future, and their family's security.</p>
+        <div class="ck-list">
+          <div class="ck-item"><div class="ck-mark">✓</div>Open in 5 minutes — fully online</div>
+          <div class="ck-item"><div class="ck-mark">✓</div>No minimum balance required</div>
+          <div class="ck-item"><div class="ck-mark">✓</div>Debit card delivered in 3–5 days</div>
+          <div class="ck-item"><div class="ck-mark">✓</div>FDIC insured up to $250,000</div>
+          <div class="ck-item"><div class="ck-mark">✓</div>Dedicated UK-based phone support</div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="tab-row">
+        <button class="atab on" onclick="swTab('reg',this)">New Account</button>
+        <button class="atab" onclick="swTab('log',this)">Sign In</button>
+      </div>
+
+      <!-- Card application banner — shown when user comes from card section -->
+      <div id="card-banner" style="display:none;background:linear-gradient(135deg,#f5c842,#e0a800);border-radius:10px;padding:12px 16px;margin-bottom:18px;display:none;align-items:center;gap:12px">
+        <span style="font-size:22px" id="card-banner-icon">💳</span>
+        <div>
+          <div style="font-family:var(--fd);font-size:13px;font-weight:700;color:var(--navy2)" id="card-banner-title">Debit Card Application</div>
+          <div style="font-family:var(--fs);font-size:12px;color:var(--navy)" id="card-banner-sub">Sign up or sign in below to continue your card application</div>
+        </div>
+      </div>
+
+      <div class="fb" id="freg">
+        <div class="fld"><label>Full Name</label><input type="text" placeholder="As on your ID"></div>
+        <div class="fld"><label>Date of Birth</label><input type="date"></div>
+        <div class="fld"><label>Account Type</label>
+          <select id="account-type-select">
+            <option value="current">Current Account (Everyday Banking)</option>
+            <option value="savings">Savings Account</option>
+            <option value="student">Student Account</option>
+            <option value="senior">Senior / Pensioner Account</option>
+            <option value="business">Business Account</option>
+            <option value="junior">Junior Account (for my child)</option>
+            <option value="debit" style="font-weight:700">💳 Classic Debit Card</option>
+            <option value="credit" style="font-weight:700">💳 Standard Credit Card</option>
+            <option value="gold" style="font-weight:700">⭐ Gold Rewards Card</option>
+          </select>
+        </div>
+        <div class="fld"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+        <div class="fld"><label>Password</label><input type="password" placeholder="Minimum 8 characters"></div>
+        <button class="fsub" onclick="doReg()">Open My Account →</button>
+      </div>
+      <div class="fb hide" id="flog">
+        <div class="fld"><label>Email Address</label><input type="email" id="login-email" placeholder="your@email.com"></div>
+        <div class="fld"><label>Password</label><input type="password" placeholder="Your password"></div>
+        <button class="fsub" onclick="doLog()">Sign In to Online Banking →</button>
+        <p style="font-family:var(--fs);font-size:13px;color:var(--text3);text-align:center;margin-top:14px"><a href="#" onclick="openForgotModal();return false;" style="color:var(--blue)">Forgot your password?</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="contact-grid">
+    <div class="rl">
+      <div class="kicker k-blue">Get in Touch</div>
+      <h2 class="sec-title">We Are Here<br>to Help You</h2>
+      <p style="font-family:var(--fs);font-size:16px;color:var(--text3);line-height:1.85">Our friendly team is available Monday to Friday 8AM–8PM, and Saturday 9AM–5PM. No automated menus — you'll always speak to a real person.</p>
+      <div class="contact-img">
+        <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=800&q=80" alt="Office">
+      </div>
+      <div class="addr-box">
+        <strong>We Chase Bank, N.A. — Head Office</strong>
+        <p>383 Madison Avenue, 47th Floor, New York, NY 10179<br>📞 1-800-WE-CHASE &nbsp;|&nbsp; 📧 help@wechase.com<br>🏦 Over 150 branches nationwide — walk in anytime</p>
+      </div>
+
+      <!-- Attractive social media section -->
+      <div class="social-section">
+        <div class="social-section-title">Follow Us &amp; Stay Connected</div>
+        <div class="social-links">
+          <a href="#" class="social-link sl-insta">
+            <div class="sl-icon">📸</div>
+            <div class="sl-body">
+              <div class="sl-platform">Instagram</div>
+              <div class="sl-handle">@wechasebank · 48.2K followers</div>
+            </div>
+            <div class="sl-arrow">→</div>
+          </a>
+          <a href="#" class="social-link sl-linkedin">
+            <div class="sl-icon" style="font-size:18px;font-weight:900;color:#fff;font-family:serif">in</div>
+            <div class="sl-body">
+              <div class="sl-platform">LinkedIn</div>
+              <div class="sl-handle">We Chase Bank · 102K followers</div>
+            </div>
+            <div class="sl-arrow">→</div>
+          </a>
+          <a href="#" class="social-link sl-twitter">
+            <div class="sl-icon" style="font-size:16px;font-weight:900;color:#fff;letter-spacing:-1px">𝕏</div>
+            <div class="sl-body">
+              <div class="sl-platform">Twitter / X</div>
+              <div class="sl-handle">@wechase · 31.7K followers</div>
+            </div>
+            <div class="sl-arrow">→</div>
+          </a>
+          <a href="#" class="social-link sl-facebook">
+            <div class="sl-icon" style="font-size:20px;font-weight:900;color:#fff">f</div>
+            <div class="sl-body">
+              <div class="sl-platform">Facebook</div>
+              <div class="sl-handle">We Chase Bank · 89K likes</div>
+            </div>
+            <div class="sl-arrow">→</div>
+          </a>
+          <a href="#" class="social-link sl-branch">
+            <div class="sl-icon">🗺️</div>
+            <div class="sl-body">
+              <div class="sl-platform">Find Your Nearest Branch</div>
+              <div class="sl-handle">150+ locations worldwide — find one near you</div>
+            </div>
+            <div class="sl-arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="rr cfr">
+      <div class="kicker k-blue" style="margin-bottom:24px">Send Us a Message</div>
+      <div class="fld"><label>Your Name</label><input type="text" placeholder="Full name"></div>
+      <div class="fld"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+      <div class="fld"><label>I need help with…</label>
+        <select style="width:100%;padding:13px 16px;background:var(--gray-lt);border:2px solid var(--gray);border-radius:8px;color:var(--text);font-family:var(--fs);font-size:15px;outline:none;transition:all .3s">
+          <option>Opening an account</option>
+          <option>My debit or credit card</option>
+          <option>A loan or mortgage</option>
+          <option>My pension or retirement plan</option>
+          <option>Student banking</option>
+          <option>Business banking</option>
+          <option>Report fraud or a problem</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="fld"><label>Message</label><textarea placeholder="Tell us how we can help…"></textarea></div>
+      <button class="fsub" onclick="doCon()">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="ft">
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-logo">We Chase Bank</div>
+      <div class="ft-tagline">Your Trusted Partner Since 2007</div>
+      <p>FDIC Insured. Equal Housing Lender. Member SIPC. Regulated by the Federal Reserve. Serving customers in 14 countries with honesty and care.</p>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Personal</div>
+      <a href="#">Current Accounts</a><a href="#">Savings &amp; ISAs</a><a href="#">Mortgages</a><a href="#">Personal Loans</a><a href="#">Debit &amp; Credit Cards</a><a href="#">Travel Money</a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Planning</div>
+      <a href="#">Pensions (SIPP)</a><a href="#">Life Insurance</a><a href="#">Student Banking</a><a href="#">Junior Accounts</a><a href="#">Senior Banking</a><a href="#">Will &amp; Estate Planning</a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Business</div>
+      <a href="#">Business Accounts</a><a href="#">Business Loans</a><a href="#">Payroll Services</a><a href="#">Merchant Services</a><a href="#">Corporate Cards</a><a href="#">Invoice Finance</a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Help</div>
+      <a href="#">Help Centre</a><a href="#">Find a Branch</a><a href="#">Report Fraud</a><a href="#">Accessibility</a><a href="#">Complaints</a><a href="#">Regulatory Info</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <div class="ft-copy">© 2026 We Chase Bank, N.A. All rights reserved. FDIC Insured. Equal Housing Lender.</div>
+    <div class="ft-soc">
+      <a href="#" target="_blank" title="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
+      </a>
+      <a href="#" target="_blank" title="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="#" target="_blank" title="X / Twitter" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.258 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </a>
+      <a href="#" target="_blank" title="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD MODAL -->
+<div id="forgot-modal" style="position:fixed;inset:0;z-index:9100;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s">
+  <div style="position:absolute;inset:0;background:rgba(10,20,40,0.85);backdrop-filter:blur(8px)" onclick="closeForgotModal()"></div>
+  <div style="position:relative;z-index:2;background:#fff;border-radius:20px;padding:36px 32px;width:min(420px,92vw);box-shadow:0 32px 80px rgba(0,0,0,0.3);transform:scale(0.9) translateY(16px);transition:transform .4s cubic-bezier(.22,.68,0,1.2)" id="forgot-box">
+    <button onclick="closeForgotModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#999;line-height:1">✕</button>
+
+    <!-- Step 1: Enter Email -->
+    <div id="fp-s1">
+      <div style="font-size:28px;margin-bottom:8px">🔐</div>
+      <h3 style="font-family:var(--fd);font-size:20px;font-weight:700;color:var(--navy2);margin-bottom:6px">Forgot Password?</h3>
+      <p style="font-family:var(--fs);font-size:13px;color:var(--text3);margin-bottom:22px;line-height:1.6">No worries! Enter your registered email and we'll send you a 6-digit OTP to reset your password.</p>
+      <div class="fld" style="margin-bottom:16px"><label>Email Address</label><input type="email" id="fp-email" placeholder="your@email.com" style="width:100%;box-sizing:border-box"></div>
+      <button class="fsub" onclick="sendOTP()" style="width:100%">Send OTP →</button>
+    </div>
+
+    <!-- Step 2: Enter OTP -->
+    <div id="fp-s2" style="display:none">
+      <div style="font-size:28px;margin-bottom:8px">📧</div>
+      <h3 style="font-family:var(--fd);font-size:20px;font-weight:700;color:var(--navy2);margin-bottom:6px">Check Your Email</h3>
+      <p style="font-family:var(--fs);font-size:13px;color:var(--text3);margin-bottom:6px;line-height:1.6">We've sent a 6-digit OTP to <strong id="fp-email-show" style="color:var(--blue)"></strong></p>
+      <p style="font-family:var(--fs);font-size:12px;color:#999;margin-bottom:20px">OTP expires in <span id="otp-timer" style="color:var(--blue);font-weight:700">60s</span></p>
+      <div style="display:flex;gap:8px;justify-content:center;margin-bottom:20px">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric">
+      </div>
+      <button class="fsub" onclick="verifyOTP()" style="width:100%">Verify OTP →</button>
+      <p style="text-align:center;font-family:var(--fs);font-size:12px;color:#999;margin-top:12px">Didn't receive it? <a href="#" onclick="resendOTP();return false;" style="color:var(--blue)">Resend OTP</a></p>
+    </div>
+
+    <!-- Step 3: New Password -->
+    <div id="fp-s3" style="display:none">
+      <div style="font-size:28px;margin-bottom:8px">🔑</div>
+      <h3 style="font-family:var(--fd);font-size:20px;font-weight:700;color:var(--navy2);margin-bottom:6px">Set New Password</h3>
+      <p style="font-family:var(--fs);font-size:13px;color:var(--text3);margin-bottom:22px">OTP verified! Now create a new password for your account.</p>
+      <div class="fld" style="margin-bottom:12px"><label>New Password</label><input type="password" id="fp-newpass" placeholder="Minimum 8 characters" style="width:100%;box-sizing:border-box"></div>
+      <div class="fld" style="margin-bottom:16px"><label>Confirm Password</label><input type="password" id="fp-confpass" placeholder="Re-enter password" style="width:100%;box-sizing:border-box"></div>
+      <button class="fsub" onclick="resetPassword()" style="width:100%">Reset Password →</button>
+    </div>
+
+    <!-- Step 4: Success -->
+    <div id="fp-s4" style="display:none;text-align:center">
+      <div style="width:60px;height:60px;background:linear-gradient(135deg,#28c840,#20a032);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px">✓</div>
+      <h3 style="font-family:var(--fd);font-size:20px;font-weight:700;color:var(--navy2);margin-bottom:8px">Password Reset!</h3>
+      <p style="font-family:var(--fs);font-size:13px;color:var(--text3);margin-bottom:22px;line-height:1.6">Your password has been successfully reset. You can now sign in with your new password.</p>
+      <button class="fsub" onclick="closeForgotModal();swTab('log',document.querySelectorAll('.atab')[1]);" style="width:100%">Go to Sign In →</button>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="vid-modal" id="vid-modal">
+  <div class="vid-backdrop" onclick="closeVidModal()"></div>
+  <div class="vid-box">
+    <button class="vid-close" onclick="closeVidModal()">✕</button>
+    <div class="vid-inner" style="padding:0;background:#000;position:relative">
+      <!-- Animated registration demo -->
+      <div id="reg-demo" style="aspect-ratio:16/9;background:#0f2742;position:relative;overflow:hidden;font-family:Arial,sans-serif">
+
+        <!-- Browser chrome -->
+        <div style="background:#1a3a5c;padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.08)">
+          <div style="display:flex;gap:6px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px 12px;font-size:11px;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:6px">
+            <span style="color:#28c840;font-size:10px">🔒</span> wechasebank.com/open-account
+          </div>
+        </div>
+
+        <!-- Demo content area -->
+        <div style="padding:20px 28px;height:calc(100% - 38px);display:flex;flex-direction:column;justify-content:center">
+
+          <!-- Step indicator -->
+          <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:18px">
+            <div class="demo-step-dot" id="dot1" style="width:28px;height:28px;border-radius:50%;background:#f5c842;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0f2742;transition:all .4s">1</div>
+            <div style="width:32px;height:2px;background:rgba(255,255,255,0.15)" id="line1"></div>
+            <div class="demo-step-dot" id="dot2" style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);transition:all .4s">2</div>
+            <div style="width:32px;height:2px;background:rgba(255,255,255,0.15)" id="line2"></div>
+            <div class="demo-step-dot" id="dot3" style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);transition:all .4s">3</div>
+            <div style="width:32px;height:2px;background:rgba(255,255,255,0.15)" id="line3"></div>
+            <div class="demo-step-dot" id="dot4" style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);transition:all .4s">4</div>
+          </div>
+          <div style="text-align:center;margin-bottom:16px">
+            <div id="demo-step-title" style="font-size:13px;font-weight:700;color:#f5c842;letter-spacing:.5px;text-transform:uppercase">Step 1: Enter Your Details</div>
+          </div>
+
+          <!-- Form mockup -->
+          <div id="demo-panel" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px 22px;max-width:420px;margin:0 auto;width:100%">
+
+            <!-- Step 1: basic details -->
+            <div id="demo-s1">
+              <div style="margin-bottom:12px">
+                <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Full Name</div>
+                <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:9px 12px;font-size:13px;color:#fff;position:relative;overflow:hidden">
+                  <span id="type-name" style="border-right:2px solid #f5c842"></span>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div>
+                  <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Date of Birth</div>
+                  <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:9px 12px;font-size:13px;color:#fff"><span id="type-dob"></span></div>
+                </div>
+                <div>
+                  <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Account Type</div>
+                  <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:9px 12px;font-size:13px;color:#f5c842"><span id="type-acc"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: contact -->
+            <div id="demo-s2" style="display:none">
+              <div style="margin-bottom:12px">
+                <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Email Address</div>
+                <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:9px 12px;font-size:13px;color:#fff"><span id="type-email"></span></div>
+              </div>
+              <div>
+                <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Password</div>
+                <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:9px 12px;font-size:13px;color:#fff;letter-spacing:4px"><span id="type-pass"></span></div>
+              </div>
+            </div>
+
+            <!-- Step 3: verify -->
+            <div id="demo-s3" style="display:none;text-align:center;padding:10px 0">
+              <div style="font-size:36px;margin-bottom:10px">📧</div>
+              <div style="font-size:13px;color:#fff;font-weight:600;margin-bottom:6px">Check Your Email</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6">A verification link has been sent to<br><span style="color:#f5c842">john.doe@email.com</span></div>
+              <div id="verify-bar" style="margin-top:14px;background:rgba(255,255,255,0.08);border-radius:20px;height:6px;overflow:hidden">
+                <div id="verify-fill" style="height:100%;background:linear-gradient(90deg,#f5c842,#4ec9e0);width:0%;border-radius:20px;transition:width 2.5s ease"></div>
+              </div>
+            </div>
+
+            <!-- Step 4: success -->
+            <div id="demo-s4" style="display:none;text-align:center;padding:10px 0">
+              <div id="success-check" style="width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#28c840,#20a032);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px;transform:scale(0);transition:transform .5s cubic-bezier(.34,1.56,.64,1)">✓</div>
+              <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:6px">Account Created!</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.7">Welcome to We Chase Bank, John!<br>Your debit card will arrive in 3–5 days.</div>
+              <div style="margin-top:14px;display:inline-block;background:#f5c842;color:#0f2742;font-size:11px;font-weight:700;padding:7px 20px;border-radius:20px">Go to Dashboard →</div>
+            </div>
+
+          </div>
+
+          <!-- Next button -->
+          <div style="text-align:center;margin-top:14px">
+            <div id="demo-next-hint" style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.5px">Auto-advancing…</div>
+          </div>
+
+        </div>
+
+        <!-- We Chase branding watermark -->
+        <div style="position:absolute;top:52px;right:16px;font-size:11px;font-weight:700;color:rgba(255,255,255,0.12);letter-spacing:1px">WE CHASE BANK</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING CTA -->
+<button class="float-cta" id="float-cta" onclick="s('auth')">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  Open Account
+</button>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- CHAT -->
+<div class="chat-fab">
+  <div class="cpanel" id="cpanel">
+    <div class="cph">
+      <div><div class="cph-t" style="display:flex;align-items:center;gap:10px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="none" style="flex-shrink:0;background:rgba(255,255,255,0.12);border-radius:50%;padding:3px">
+            <circle cx="16" cy="11" r="5.5" fill="#fff" opacity="0.9"/>
+            <path d="M4 30 C4 21 28 21 28 30" fill="#fff" opacity="0.9"/>
+          </svg>
+          We Chase Support
+        </div><div class="cph-s">● Online Now</div></div>
+      <button class="cph-x" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="cpm" id="cpm">
+      <div class="cm bot">Hello! 👋 Welcome to We Chase Bank. How can I help you today? Ask me about accounts, loans, pensions, cards, or anything else!</div>
+    </div>
+    <div class="cpi">
+      <input type="text" id="cpin" placeholder="Ask a question…" onkeydown="if(event.key==='Enter')cpSend()">
+      <button class="cpi-s" onclick="cpSend()">Send</button>
+    </div>
+  </div>
+  <div class="ctrig" onclick="toggleChat()" id="ctrig">
+    <svg id="ctrig-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="26" height="26" fill="none">
+      <circle cx="20" cy="14" r="7" fill="#fff" opacity="0.95"/>
+      <path d="M6 38 C6 27 34 27 34 38" fill="#fff" opacity="0.95"/>
+      <circle cx="32" cy="10" r="4" fill="#5cb85c"/>
+    </svg>
+    <svg id="ctrig-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="20" height="20" fill="none" style="display:none">
+      <line x1="8" y1="8" x2="32" y2="32" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="32" y1="8" x2="8" y2="32" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+/* ── LOADER ── */
+let p = 0;
+const pl = document.getElementById('ldp');
+const pi = setInterval(() => { p += 2; pl.textContent = p + '%'; if (p >= 100) clearInterval(pi); }, 42);
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('gone'), 2400));
+
+/* ── HEADER SHADOW ON SCROLL ── */
+window.addEventListener('scroll', () => document.getElementById('hdr').classList.toggle('up', scrollY > 80));
+
+/* ── SMOOTH SCROLL (nav links + any href="#id") ── */
+function s(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+/* ── ACTIVE NAV HIGHLIGHT ── */
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('nav a[href^="#"]');
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.35 });
+sections.forEach(sec => navObserver.observe(sec));
+
+/* ── REVEAL ON SCROLL ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      if (e.target.classList.contains('stat-box')) e.target.classList.add('bar-on');
+      // stagger: also add bar-on to any stat-box children
+      e.target.querySelectorAll('.stat-box').forEach(sb => sb.classList.add('on', 'bar-on'));
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv, .rl, .rr, .stagger, .stat-box').forEach(el => io.observe(el));
+
+/* ── ANIMATED COUNTERS ── */
+const co = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target, t = +el.dataset.t; let n = 0;
+      const tm = setInterval(() => { n = Math.min(n + (t / 60), t); el.textContent = Math.floor(n); if (n >= t) clearInterval(tm); }, 20);
+      co.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.cnum').forEach(el => co.observe(el));
+
+/* ── TOAST ── */
+function toast2(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('on');
+  setTimeout(() => el.classList.remove('on'), 4500);
+}
+
+/* ── AUTH TABS ── */
+function swTab(tab, btn) {
+  document.querySelectorAll('.atab').forEach(t => t.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('freg').classList.toggle('hide', tab !== 'reg');
+  document.getElementById('flog').classList.toggle('hide', tab !== 'log');
+}
+
+/* ── FORGOT PASSWORD / OTP FLOW ── */
+let otpTimerInterval = null;
+let generatedOTP = null;
+
+function openForgotModal() {
+  // Reset to step 1
+  ['fp-s1','fp-s2','fp-s3','fp-s4'].forEach((id,i) => {
+    document.getElementById(id).style.display = i === 0 ? 'block' : 'none';
+  });
+  document.getElementById('fp-email').value = '';
+  document.getElementById('forgot-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeForgotModal() {
+  document.getElementById('forgot-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  clearInterval(otpTimerInterval);
+}
+
+function sendOTP() {
+  const email = document.getElementById('fp-email').value.trim();
+  if (!email || !/\S+@\S+\.\S+/.test(email)) { toast2('⚠️ Please enter a valid email address.'); return; }
+  generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+  document.getElementById('fp-email-show').textContent = email;
+  document.getElementById('fp-s1').style.display = 'none';
+  document.getElementById('fp-s2').style.display = 'block';
+  // Auto-fill OTP boxes for demo (remove in production!)
+  const boxes = document.querySelectorAll('.otp-box');
+  generatedOTP.split('').forEach((d,i) => { if(boxes[i]) boxes[i].value = ''; });
+  // OTP box auto-advance
+  boxes.forEach((box, i) => {
+    box.addEventListener('input', () => {
+      box.value = box.value.replace(/[^0-9]/g,'').slice(-1);
+      if (box.value && boxes[i+1]) boxes[i+1].focus();
+    });
+    box.addEventListener('keydown', e => {
+      if (e.key === 'Backspace' && !box.value && boxes[i-1]) boxes[i-1].focus();
+    });
+  });
+  // Start 60s countdown
+  let secs = 60;
+  clearInterval(otpTimerInterval);
+  document.getElementById('otp-timer').textContent = secs + 's';
+  otpTimerInterval = setInterval(() => {
+    secs--;
+    document.getElementById('otp-timer').textContent = secs + 's';
+    if (secs <= 0) { clearInterval(otpTimerInterval); document.getElementById('otp-timer').textContent = 'Expired'; }
+  }, 1000);
+  toast2('📧 OTP sent to ' + email + '! (Demo OTP: ' + generatedOTP + ')');
+  if(boxes[0]) boxes[0].focus();
+}
+
+function verifyOTP() {
+  const boxes = document.querySelectorAll('.otp-box');
+  const entered = Array.from(boxes).map(b => b.value).join('');
+  if (entered.length < 6) { toast2('⚠️ Please enter the complete 6-digit OTP.'); return; }
+  if (entered === generatedOTP) {
+    clearInterval(otpTimerInterval);
+    document.getElementById('fp-s2').style.display = 'none';
+    document.getElementById('fp-s3').style.display = 'block';
+    toast2('✅ OTP verified successfully!');
+  } else {
+    toast2('❌ Incorrect OTP. Please check and try again.');
+    boxes.forEach(b => { b.value = ''; b.style.borderColor = '#e53e3e'; setTimeout(() => b.style.borderColor = '', 1000); });
+    boxes[0].focus();
+  }
+}
+
+function resendOTP() {
+  const email = document.getElementById('fp-email-show').textContent;
+  generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+  let secs = 60;
+  clearInterval(otpTimerInterval);
+  document.getElementById('otp-timer').textContent = secs + 's';
+  otpTimerInterval = setInterval(() => {
+    secs--;
+    document.getElementById('otp-timer').textContent = secs + 's';
+    if (secs <= 0) { clearInterval(otpTimerInterval); document.getElementById('otp-timer').textContent = 'Expired'; }
+  }, 1000);
+  document.querySelectorAll('.otp-box').forEach(b => b.value = '');
+  toast2('📧 New OTP sent to ' + email + '! (Demo OTP: ' + generatedOTP + ')');
+}
+
+function resetPassword() {
+  const np = document.getElementById('fp-newpass').value;
+  const cp = document.getElementById('fp-confpass').value;
+  if (np.length < 8) { toast2('⚠️ Password must be at least 8 characters.'); return; }
+  if (np !== cp) { toast2('⚠️ Passwords do not match.'); return; }
+  document.getElementById('fp-s3').style.display = 'none';
+  document.getElementById('fp-s4').style.display = 'block';
+  toast2('🎉 Password reset successfully!');
+}
+
+
+const cardMeta = {
+  debit:  { icon: '💳', name: 'Classic Debit Card',     color: '#1a3a5c' },
+  credit: { icon: '💳', name: 'Standard Credit Card',   color: '#7b1c3e' },
+  gold:   { icon: '⭐', name: 'Gold Rewards Card',       color: '#b8870a' }
+};
+let pendingCard = null;
+
+function applyForCard(type) {
+  pendingCard = type;
+  const meta = cardMeta[type];
+
+  // Show the banner
+  const banner = document.getElementById('card-banner');
+  banner.style.display = 'flex';
+  banner.style.background = type === 'gold'
+    ? 'linear-gradient(135deg,#f5c842,#e0a800)'
+    : type === 'credit'
+    ? 'linear-gradient(135deg,#fce8ef,#f5c0cc)'
+    : 'linear-gradient(135deg,#e8f4fd,#b6d9f7)';
+  document.getElementById('card-banner-icon').textContent  = meta.icon;
+  document.getElementById('card-banner-title').textContent = meta.name + ' Application';
+  document.getElementById('card-banner-sub').textContent   = 'Sign up or sign in below to continue your ' + meta.name + ' application';
+
+  // Pre-select the card in dropdown
+  const sel = document.getElementById('account-type-select');
+  if (sel) sel.value = type;
+
+  // Switch to Register tab
+  const regBtn = document.querySelector('.atab');
+  swTab('reg', regBtn);
+
+  // Scroll to auth
+  document.getElementById('auth').scrollIntoView({ behavior: 'smooth' });
+
+  toast2(meta.icon + ' ' + meta.name + ' selected! Fill in your details to apply.');
+}
+
+
+function doReg() {
+  const name = document.querySelector('#freg input[type="text"]').value.trim();
+  const dob  = document.querySelector('#freg input[type="date"]').value;
+  const email= document.querySelector('#freg input[type="email"]').value.trim();
+  const pass = document.querySelector('#freg input[type="password"]').value;
+  if (!name)  { toast2('⚠️ Please enter your full name.'); return; }
+  if (!dob)   { toast2('⚠️ Please enter your date of birth.'); return; }
+  if (!email || !/\S+@\S+\.\S+/.test(email)) { toast2('⚠️ Please enter a valid email address.'); return; }
+  if (pass.length < 8) { toast2('⚠️ Password must be at least 8 characters.'); return; }
+  if (pendingCard) {
+    const meta = cardMeta[pendingCard];
+    toast2(meta.icon + ' Success! Your ' + meta.name + ' application is submitted. We will email ' + email + ' within 24 hours.');
+    document.getElementById('card-banner').style.display = 'none';
+    pendingCard = null;
+  } else {
+    toast2('🎉 Welcome! Your account application has been received. We will email you within 24 hours.');
+  }
+}
+
+function doLog() {
+  const email = document.querySelector('#flog input[type="email"]').value.trim();
+  const pass  = document.querySelector('#flog input[type="password"]').value;
+  if (!email || !/\S+@\S+\.\S+/.test(email)) { toast2('⚠️ Please enter a valid email address.'); return; }
+  if (!pass) { toast2('⚠️ Please enter your password.'); return; }
+  if (pendingCard) {
+    const meta = cardMeta[pendingCard];
+    toast2(meta.icon + ' Signed in! Your ' + meta.name + ' application is now being processed.');
+    document.getElementById('card-banner').style.display = 'none';
+    pendingCard = null;
+  } else {
+    toast2('✅ Sign-in successful. Welcome back to We Chase Bank!');
+  }
+}
+
+function doCon() {
+  const nameEl  = document.querySelector('.cfr input[type="text"]');
+  const emailEl = document.querySelector('.cfr input[type="email"]');
+  const msgEl   = document.querySelector('.cfr textarea');
+  if (!nameEl.value.trim())  { toast2('⚠️ Please enter your name.'); return; }
+  if (!emailEl.value.trim() || !/\S+@\S+\.\S+/.test(emailEl.value)) { toast2('⚠️ Please enter a valid email.'); return; }
+  if (!msgEl.value.trim())   { toast2('⚠️ Please write a message.'); return; }
+  toast2('✅ Message sent! Our team will respond within one business day.');
+  nameEl.value = ''; emailEl.value = ''; msgEl.value = '';
+}
+
+/* ── CARD SWITCHER ── */
+function switchCard(type, btn) {
+  document.querySelectorAll('.ctab').forEach(t => t.classList.remove('on'));
+  btn.classList.add('on');
+  ['debit', 'credit', 'gold'].forEach(t => {
+    const ci = document.getElementById('card-info-' + t);
+    const sc = document.getElementById('sc-' + t);
+    if (ci) ci.style.display = t === type ? 'block' : 'none';
+    if (sc) sc.style.display = t === type ? 'block' : 'none';
+  });
+}
+
+/* ── SERVICE ITEM CLICKS ── */
+document.querySelectorAll('.svc-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const name = item.textContent.trim();
+    toast2(`📋 Opening information on: ${name}`);
+  });
+});
+
+/* ── PRODUCT BUTTONS ── */
+document.querySelectorAll('.prod-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const title = btn.closest('.prod-card').querySelector('.prod-title')?.textContent.trim() || 'this product';
+    toast2(`🏦 Starting application for: ${title}`);
+    setTimeout(() => document.getElementById('auth')?.scrollIntoView({ behavior: 'smooth' }), 800);
+  });
+});
+
+/* ── PHONE APP BUTTONS ── */
+document.querySelectorAll('.ph-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const action = btn.textContent.trim();
+    const msgs = {
+      'Pay': '💸 Pay feature — download the We Chase app to get started.',
+      'Transfer': '🔄 Transfer feature — download the We Chase app to get started.',
+      'Cards': '💳 Manage your cards — download the We Chase app.',
+      'More': '📱 Explore all features in the We Chase mobile app.'
+    };
+    toast2(msgs[action] || `Opening ${action}…`);
+  });
+});
+
+/* ── BRANCH CARDS ── */
+document.querySelectorAll('.branch-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const city = card.querySelector('.bi-city')?.textContent.trim() || 'this city';
+    toast2(`🗺️ Finding We Chase branches in ${city}…`);
+  });
+});
+
+/* ── CHAT ── */
+let chatOpen = false;
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('cpanel').style.display = chatOpen ? 'block' : 'none';
+  const iconEl = document.getElementById('ctrig-icon');
+  const closeEl = document.getElementById('ctrig-close');
+  if (iconEl) iconEl.style.display = chatOpen ? 'none' : 'block';
+  if (closeEl) closeEl.style.display = chatOpen ? 'block' : 'none';
+}
+
+const ans = {
+  account:  'We offer Current Accounts, Savings Accounts, Student Accounts, Senior Accounts, Junior Accounts, and Business Accounts. All free to open!',
+  card:     'We have Classic Debit Cards, Standard Credit Cards, Gold Reward Cards, and Prepaid Travel Cards. Apply online in minutes.',
+  loan:     'We offer Personal Loans, Home Mortgages, Car Loans, Student Loans, and Business Loans. Rates from 4.9% APR.',
+  pension:  'Our pension team offers Personal Pensions (SIPP), Workplace Pensions, and Retirement Income planning. Call us to speak with an advisor.',
+  student:  'Our Student Account includes a 0% overdraft, Student Loan support, and a free debit card. Apply with your university email.',
+  senior:   'We have a dedicated Senior Account with large-print statements, no-wait phone support, and in-branch assistance. Very easy to open.',
+  savings:  'Our Fixed-Rate Savings Account pays up to 5.2% AER. Easy Access Savings and ISAs are also available.',
+  insurance:'We offer Home, Life, Travel, Income Protection, Critical Illness, and Pet Insurance through our partners.',
+  branch:   'We have 150+ branches worldwide. Visit our Branches section to find your nearest one.',
+  contact:  'Call us on 1-800-WE-CHASE (Mon–Fri 8AM–8PM) or email help@wechase.com. We always answer with a real person!',
+  mortgage: 'Our Home Mortgage rates start from 4.49% (2yr fixed). First-time buyer, mover, and remortgage options all available.',
+  business: 'Our Business Accounts include a free current account, business loans, payroll services, and merchant payment solutions.'
+};
+
+function getAns(query) {
+  if (/account|open|current|basic/i.test(query))              return ans.account;
+  if (/card|debit|credit|visa|mastercard/i.test(query))       return ans.card;
+  if (/loan|borrow|personal loan|car loan|overdraft/i.test(query)) return ans.loan;
+  if (/pension|retire|retirement|sipp/i.test(query))          return ans.pension;
+  if (/student|university|graduate|tuition/i.test(query))     return ans.student;
+  if (/senior|elderly|old|accessible/i.test(query))           return ans.senior;
+  if (/saving|isa|interest|fixed rate/i.test(query))          return ans.savings;
+  if (/insurance|protect|cover|life insurance/i.test(query))  return ans.insurance;
+  if (/branch|office|location|near me/i.test(query))          return ans.branch;
+  if (/contact|phone|call|speak|help|support/i.test(query))   return ans.contact;
+  if (/mortgage|house|home loan|remortgage/i.test(query))     return ans.mortgage;
+  if (/business|company|sme|payroll|merchant/i.test(query))   return ans.business;
+  return 'Great question! Our team can help with that. Call 1-800-WE-CHASE Mon–Fri 8AM–8PM, or visit any of our 150+ branches. 😊';
+}
+
+function cpAdd(text, type) {
+  const b = document.getElementById('cpm');
+  const d = document.createElement('div');
+  d.className = `cm ${type}`;
+  d.textContent = text;
+  b.appendChild(d);
+  b.scrollTop = b.scrollHeight;
+}
+
+function cpSend() {
+  const inp = document.getElementById('cpin'), v = inp.value.trim();
+  if (!v) return;
+  cpAdd(v, 'user');
+  inp.value = '';
+  setTimeout(() => cpAdd(getAns(v), 'bot'), 650);
+}
+
+/* ── LIVE BALANCE (phone mockup) ── */
+let bal = 84231.50;
+setInterval(() => {
+  bal += (Math.random() - 0.42) * 40;
+  if (bal < 80000) bal = 84000;
+  const el = document.getElementById('app-bal');
+  if (el) el.textContent = '£' + bal.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}, 4500);
+
+/* ── PARALLAX (hero background) ── */
+window.addEventListener('scroll', () => {
+  const img = document.querySelector('.hero-bg-img img');
+  if (img) img.style.transform = `scale(1.06) translateY(${scrollY * 0.03}px)`;
+});
+
+/* ── TYPEWRITER EFFECT ── */
+(function(){
+  const words = ['Trust,', 'Security.', 'Growth.', 'Simplicity.', 'You.'];
+  const el = document.getElementById('tw-word');
+  if (!el) return;
+  let wi = 0, ci = 0, deleting = false;
+  function tick() {
+    const word = words[wi];
+    if (!deleting) {
+      el.textContent = word.slice(0, ++ci);
+      if (ci === word.length) { deleting = true; setTimeout(tick, 2000); return; }
+    } else {
+      el.textContent = word.slice(0, --ci);
+      if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(tick, 300); return; }
+    }
+    setTimeout(tick, deleting ? 55 : 95);
+  }
+  setTimeout(tick, 1800);
+})();
+
+/* ── REGISTRATION DEMO ANIMATION ── */
+let demoTimer = null;
+
+function startRegDemo() {
+  // Reset all
+  clearAllDemoTimers();
+  const steps = ['demo-s1','demo-s2','demo-s3','demo-s4'];
+  steps.forEach(id => { const el = document.getElementById(id); if(el) el.style.display = 'none'; });
+  ['dot2','dot3','dot4'].forEach(id => {
+    const d = document.getElementById(id);
+    if(d){ d.style.background='rgba(255,255,255,0.15)'; d.style.color='rgba(255,255,255,0.4)'; }
+  });
+  const dot1 = document.getElementById('dot1');
+  if(dot1){ dot1.style.background='#f5c842'; dot1.style.color='#0f2742'; }
+
+  // Step 1 — type name, dob, account type
+  const s1 = document.getElementById('demo-s1');
+  if(s1) s1.style.display = 'block';
+  setTitle('Step 1: Enter Your Details');
+
+  const nameEl  = document.getElementById('type-name');
+  const dobEl   = document.getElementById('type-dob');
+  const accEl   = document.getElementById('type-acc');
+  if(nameEl) nameEl.textContent = '';
+  if(dobEl)  dobEl.textContent  = '';
+  if(accEl)  accEl.textContent  = '';
+
+  typeText(nameEl, 'John Doe', 80, () => {
+    typeText(dobEl, '15 / 08 / 1998', 60, () => {
+      typeText(accEl, 'Current Account', 55, () => {
+        // Move to step 2 after pause
+        demoTimer = setTimeout(() => advanceDemo(2), 900);
+      });
+    });
+  });
+}
+
+function advanceDemo(step) {
+  ['demo-s1','demo-s2','demo-s3','demo-s4'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    if(el) el.style.display = (i === step-1) ? 'block' : 'none';
+  });
+  // Update step dots
+  ['dot1','dot2','dot3','dot4'].forEach((id,i) => {
+    const d = document.getElementById(id);
+    if(!d) return;
+    if(i < step) { d.style.background='#f5c842'; d.style.color='#0f2742'; }
+    else         { d.style.background='rgba(255,255,255,0.15)'; d.style.color='rgba(255,255,255,0.4)'; }
+  });
+
+  if(step === 2) {
+    setTitle('Step 2: Set Up Login');
+    const emailEl = document.getElementById('type-email');
+    const passEl  = document.getElementById('type-pass');
+    if(emailEl) emailEl.textContent = '';
+    if(passEl)  passEl.textContent  = '';
+    typeText(emailEl, 'john.doe@email.com', 55, () => {
+      typeText(passEl, '••••••••', 100, () => {
+        demoTimer = setTimeout(() => advanceDemo(3), 900);
+      });
+    });
+  }
+  else if(step === 3) {
+    setTitle('Step 3: Verify Your Email');
+    const fill = document.getElementById('verify-fill');
+    if(fill){ fill.style.width = '0%'; setTimeout(() => fill.style.width = '100%', 100); }
+    demoTimer = setTimeout(() => advanceDemo(4), 3000);
+  }
+  else if(step === 4) {
+    setTitle('Step 4: Account Created!');
+    const check = document.getElementById('success-check');
+    if(check) setTimeout(() => check.style.transform = 'scale(1)', 200);
+    // Loop back after 3.5s
+    demoTimer = setTimeout(() => startRegDemo(), 3500);
+  }
+}
+
+function setTitle(text) {
+  const el = document.getElementById('demo-step-title');
+  if(el) el.textContent = text;
+}
+
+function typeText(el, text, speed, cb) {
+  if(!el) { if(cb) cb(); return; }
+  let i = 0;
+  function tick() {
+    if(i <= text.length) { el.textContent = text.slice(0,i); i++; demoTimer = setTimeout(tick, speed); }
+    else if(cb) cb();
+  }
+  tick();
+}
+
+function clearAllDemoTimers() {
+  if(demoTimer) clearTimeout(demoTimer);
+}
+
+/* ── VIDEO MODAL ── */
+function openVidModal() {
+  const modal = document.getElementById('vid-modal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(startRegDemo, 400);
+}
+function closeVidModal() {
+  const modal = document.getElementById('vid-modal');
+  clearAllDemoTimers();
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVidModal(); });
+
+/* ── MOBILE HAMBURGER ── */
+function toggleMobileNav() {
+  const nav = document.getElementById('main-nav');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+// Close mobile nav when a link is clicked
+document.querySelectorAll('#main-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('main-nav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
+/* ── FLOATING CTA + BACK TO TOP VISIBILITY ── */
+const floatCta  = document.getElementById('float-cta');
+const backTop   = document.getElementById('back-top');
+const heroEl    = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+  const heroBottom = heroEl ? heroEl.offsetTop + heroEl.offsetHeight : 600;
+  const scrolled = scrollY > heroBottom;
+  if (floatCta) floatCta.classList.toggle('visible', scrolled);
+  if (backTop)  backTop.classList.toggle('visible', scrollY > 400);
+});
+
+
+(function(){
+  const testimonials = [
+    { quote: "We opened my mother's senior account in one morning. The staff were patient, kind, and didn't use a single confusing term.", name: 'Margaret T.', role: 'Retired Teacher, Birmingham', avatar: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=100&q=80' },
+    { quote: "I got my student loan and 0% overdraft sorted in one afternoon. So much less scary than I expected!", name: 'Priya S.', role: 'University Student, Manchester', avatar: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&q=80' },
+    { quote: "We Chase sorted our mortgage, savings ISA, and business account all at once. That personal touch is incredibly rare in banking today.", name: 'David & Claire M.', role: 'Small Business Owners, Edinburgh', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80' },
+    { quote: "Their pension advisors explained everything so clearly. I finally feel confident about my retirement at 67 - it is never too late!", name: 'Robert K.', role: 'Semi-Retired, Bristol', avatar: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=100&q=80' },
+  ];
+  let current = 0;
+  const quoteEl = document.getElementById('ht-quote');
+  const nameEl  = document.getElementById('ht-name');
+  const roleEl  = document.getElementById('ht-role');
+  const avatarEl= document.getElementById('ht-avatar');
+  const dotsEl  = document.getElementById('ht-dots');
+  const boxEl   = document.getElementById('hero-testi');
+  if (!quoteEl) return;
+
+  // Build dots
+  testimonials.forEach((_, i) => {
+    const d = document.createElement('span');
+    d.className = 'ht-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => showTesti(i);
+    dotsEl.appendChild(d);
+  });
+
+  function showTesti(idx) {
+    current = idx;
+    if (boxEl) { boxEl.style.opacity = 0; boxEl.style.transform = 'translateY(6px)'; }
+    setTimeout(() => {
+      const t = testimonials[idx];
+      quoteEl.textContent = t.quote;
+      nameEl.textContent  = t.name;
+      roleEl.textContent  = t.role;
+      avatarEl.src        = t.avatar;
+      dotsEl.querySelectorAll('.ht-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+      if (boxEl) { boxEl.style.opacity = 1; boxEl.style.transform = 'translateY(0)'; }
+    }, 250);
+  }
+
+  showTesti(0);
+  setInterval(() => showTesti((current + 1) % testimonials.length), 5000);
+})();
+
+</script>
+</body>
+</html>
